@@ -1,17 +1,17 @@
 {
-  "name": "{{name_of_lib}}",
-  "version": "0.0.0",
-  "description": "{{desc_of_lib}}",
+  "name": "solid-algo-wallets",
+  "version": "0.0.1",
+  "description": "Integrate multiple Algorand wallets with a web application client",
   "license": "MIT",
-  "author": "{{me}}",
+  "author": "SilentRhetoric",
   "contributors": [],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/{{me}}/{{name_of_lib}}.git"
+    "url": "git+https://github.com/SilentRhetoric/solid-algo-wallets.git"
   },
-  "homepage": "https://github.com/{{me}}/{{name_of_lib}}#readme",
+  "homepage": "https://github.com/SilentRhetoric/solid-algo-wallets#readme",
   "bugs": {
-    "url": "https://github.com/{{me}}/{{name_of_lib}}/issues"
+    "url": "https://github.com/SilentRhetoric/solid-algo-wallets/issues"
   },
   "files": [
     "dist"
@@ -54,33 +54,53 @@
     "update-deps": "pnpm up -Li"
   },
   "peerDependencies": {
-    "solid-js": "^1.6.0"
+    "solid-js": "^1.7.0"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^6.1.0",
-    "@typescript-eslint/parser": "^6.1.0",
+    "@blockshake/defly-connect": "^1.1.5",
+    "@daffiwallet/connect": "^1.0.3",
+    "@ledgerhq/hw-app-algorand": "^6.27.18",
+    "@ledgerhq/hw-transport-webusb": "^6.27.18",
+    "@perawallet/connect": "^1.3.1",
+    "@randlabs/myalgo-connect": "^1.4.2",
+    "@typescript-eslint/eslint-plugin": "^6.3.0",
+    "@typescript-eslint/parser": "^6.3.0",
+    "@walletconnect/client": "^1.8.0",
+    "@walletconnect/modal": "^2.6.1",
+    "@walletconnect/modal-sign-html": "^2.6.1",
+    "@walletconnect/sign-client": "^2.9.2",
+    "@walletconnect/types": "^2.9.2",
+    "@walletconnect/utils": "^2.9.2",
     "concurrently": "^8.2.0",
-    "esbuild": "^0.18.15",
+    "esbuild": "^0.19.2",
     "esbuild-plugin-solid": "^0.5.0",
-    "eslint": "^8.45.0",
+    "eslint": "^8.47.0",
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-no-only-tests": "^3.1.0",
     "jsdom": "^22.1.0",
-    "prettier": "3.0.0",
-    "solid-js": "^1.7.8",
-    "tsup": "^7.1.0",
-    "tsup-preset-solid": "^2.0.1",
+    "prettier": "3.0.1",
+    "solid-js": "^1.7.11",
+    "tsup": "^7.2.0",
+    "tsup-preset-solid": "^2.0.2",
     "typescript": "^5.1.6",
-    "vite": "^4.4.6",
+    "vite": "^4.4.9",
     "vite-plugin-solid": "^2.7.0",
-    "vitest": "^0.33.0"
+    "vitest": "^0.34.1"
   },
   "keywords": [
-    "solid"
+    "solid",
+    "algorand",
+    "wallet"
   ],
   "packageManager": "pnpm@8.6.0",
   "engines": {
     "node": ">=18",
     "pnpm": ">=8.6.0"
+  },
+  "dependencies": {
+    "@algorandfoundation/algokit-utils": "^2.3.2",
+    "@solid-primitives/storage": "^2.1.0",
+    "algosdk": "^2.4.0",
+    "buffer": "^6.0.3"
   }
 }

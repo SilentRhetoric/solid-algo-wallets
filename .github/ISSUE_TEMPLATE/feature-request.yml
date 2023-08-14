@@ -1,5 +1,5 @@
-name: "Feature Request"
-description: For feature/enhancement requests. Please search for existing issues first.
+name: '✨ Feature Request'
+description: For feature or enhancement requests to expand the library's capabilities.
 body:
   - type: markdown
     attributes:
@@ -10,14 +10,14 @@ body:
   - type: textarea
     id: problem
     attributes:
-      label: Describe The Problem To Be Solved
-      description: Provide a clear and concise description of the challenge you are running into.
+      label: Describe the problem to be solved
+      description: Provide a clear and concise description of the challenge you are running into in non-technical terms.
     validations:
       required: true
   - type: textarea
     id: solution
     attributes:
-      label: Suggest A Solution
+      label: Suggest a solution
       description: |
         A concise description of your preferred solution. Things to address include:
         - Details of the technical implementation
