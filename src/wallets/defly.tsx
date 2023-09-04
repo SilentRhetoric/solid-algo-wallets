@@ -43,7 +43,7 @@ function useDefly(): WalletInterface {
       const DeflyWalletConnect = (await import('@blockshake/defly-connect')).DeflyWalletConnect
       const client = new DeflyWalletConnect({
         // shouldShowSignTxnToast: false, // Enabled by default
-        chainId: getChainId(),
+        // chainId: getChainId(),
         // chainId: 416001, // MainNet
         // chainId: 416002, // TestNet
         // chainId: 416003, // BetaNet

@@ -4,7 +4,7 @@
  * https://docs.walletconnect.com/2.0/web/sign/dapp-usage
  * https://docs.walletconnect.com/2.0/advanced/migration-from-v1.x/dapps/dapp-checklist#common-errors-and-fixes
  */
-import { createComputed, createRoot, createSignal } from 'solid-js'
+import { createRoot, createSignal } from 'solid-js'
 import { WalletAccount, WalletInterface } from '../types'
 import { Transaction } from 'algosdk'
 import {
@@ -55,9 +55,6 @@ function useWalletConnect(): WalletInterface {
   const [accounts, setAccounts] = createSignal<WalletAccount[]>([])
   const { getWalletConnect2ChainId } = useNetwork
 
-  createComputed(() => console.debug('walletClient changed: ', JSON.stringify(walletClient())))
-
-  // TODO Load this from the environment
   const name = 'WalletConnect'
   const projectId = 'ddb0a94acaf0e2b1b33ba176d4778696'
   const metadata = {

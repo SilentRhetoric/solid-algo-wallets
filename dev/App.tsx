@@ -16,7 +16,7 @@ const App: Component = () => {
     walletInterfaces,
     transactionSigner,
   } = useWallet
-  const { algodClient } = useNetwork
+  const { algodClient, activeNetwork, setActiveNetwork, networkNames } = useNetwork
 
   const transactionSignerAccount: TransactionSignerAccount = {
     addr: address(),
@@ -37,32 +37,34 @@ const App: Component = () => {
     const atc = new AtomicTransactionComposer()
     atc.addTransaction(txn)
     const result = await atc.execute(algodClient(), 4)
-    console.log(result.txIDs)
+    console.log('Txn confirmed: ', result.txIDs)
   }
 
   return (
     <div class={styles.App}>
-      <header class={styles.header}>
-        <img src={logo} class={styles.logo} alt="logo" />
-        <h1>Solid Algo Wallets Example App</h1>
-        <p>Wallet Name: {walletName()}</p>
-        <Show when={activeWallet() !== undefined}>
-          <button class={styles.button} onClick={() => sendTestTxn()}>
-            Send Test Transaction (Pay 0A)
+      <img src={logo} class={styles.logo} alt="logo" />
+      <h1>Solid Algo Wallets</h1>
+      <h2>Example App</h2>
+      <p>Wallet Name: {walletName()}</p>
+      <select onChange={e => setActiveNetwork(e.target.value)} value={activeNetwork()}>
+        <For each={networkNames}>{network => <option value={network}>{network}</option>}</For>
+      </select>
+      <Show when={activeWallet() !== undefined}>
+        <button class={styles.button} onClick={() => sendTestTxn()}>
+          Send 0A Test Transaction
+        </button>
+        <button class={styles.button} onClick={() => disconnectWallet()}>
+          Disconnect Wallet
+        </button>
+      </Show>
+      <p>Connected Address: {address()}</p>
+      <For each={Object.values(walletInterfaces)}>
+        {wallet => (
+          <button class={styles.button} onClick={() => connectWallet(wallet)}>
+            {wallet.image}
           </button>
-          <button class={styles.button} onClick={() => disconnectWallet()}>
-            Disconnect Wallet
-          </button>
-        </Show>
-        <p>Connected Address: {address()}</p>
-        <For each={Object.values(walletInterfaces)}>
-          {wallet => (
-            <button class={styles.button} onClick={() => connectWallet(wallet)}>
-              {wallet.image}
-            </button>
-          )}
-        </For>
-      </header>
+        )}
+      </For>
     </div>
   )
 }

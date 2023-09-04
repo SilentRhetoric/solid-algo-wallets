@@ -10,7 +10,7 @@
 
 [![pnpm](https://img.shields.io/badge/maintained%20with-pnpm-cc00ff.svg?style=for-the-badge&logo=pnpm)](https://pnpm.io/)
 
-The solid-algo-wallets library provides a simple, unified interface for integrating Algorand wallets into a decentralized web application client built with SolidJS.
+The solid-algo-wallets library provides a simple, unified interface for integrating Algorand wallets into a web application client built with SolidJS.
 
 ## Quick start
 
@@ -32,7 +32,7 @@ import solid-algo-wallets from 'solid-algo-wallets'
 
 ## Overview
 
-The solid-algo-wallets library provides a simple, unified interface for integrating Algorand wallets into a decentralized web application client built with SolidJS.
+The solid-algo-wallets library provides a simple, unified interface for integrating Algorand wallets into a web application client built with SolidJS.
 
 Importing solid-algo-wallet into your app client provides convenient functions to:
 
@@ -52,7 +52,7 @@ An example web application built with SolidJS which integrates solid-algo-wallet
 
 ## Design Decisions
 
-The solid-algo-wallets library was designed in an opinionated way. These are some of the key design decisions and the rationale behind them.
+The solid-algo-wallets library was designed in an opinionated way. The following are some of the design decisions and the rationale behind them.
 
 ### Signing Interface
 

@@ -105,6 +105,16 @@ function useLedger(): WalletInterface {
     setAccounts([])
   }
 
+  // Per @AlgoTools, sometimes the wallet apps don't support keyreg or other txns
+  // and someone needs to connect as Acct A but sign with Ledger direct Acc B, to which A is rekeyed
+  // async function getAuthAccts(address) {
+  //   const { accounts } = await props.indexer
+  //     .searchAccounts()
+  //     .authAddr(address)
+  //     .do();
+  //   authAccts.value = accounts.map((a) => a.address);
+  // }
+
   // Tested successfully with txn group calling hello 7/29/23
   async function transactionSigner(
     txnGroup: Transaction[],
