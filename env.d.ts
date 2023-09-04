@@ -30,6 +30,11 @@ declare global {
     readonly VITE_LOCALNET_PERA_CHAIN_ID: 416001 | 416002 | 416003 | 4160
     readonly VITE_LOCALNET_BLOCK_EXPLORER: string
     readonly VITE_LOCALNET_NFD_SERVER: string
+    readonly VITE_WALLETCONNECT_PROJECT_ID: string
+    readonly VITE_WALLETCONNECT_PROJECT_NAME: string
+    readonly VITE_WALLETCONNECT_PROJECT_DESCRIPTION: string
+    readonly VITE_WALLETCONNECT_PROJECT_URL: string
+    readonly VITE_WALLETCONNECT_PROJECT_ICON: string
   }
   interface ImportMeta {
     env: {

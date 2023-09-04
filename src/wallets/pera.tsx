@@ -6,14 +6,14 @@ import { PeraWalletConnect } from '@perawallet/connect'
 import { WalletAccount, WalletInterface } from '../types'
 import type { Transaction } from 'algosdk'
 import { createComputed, createRoot, createSignal } from 'solid-js'
-import useNetwork from '../useNetwork'
+// import useNetwork from '../useNetwork'
 
 function usePera(): WalletInterface {
   const [walletClient, setWalletClient] = createSignal<PeraWalletConnect>()
   const [accounts, setAccounts] = createSignal<WalletAccount[]>([])
-  const { getChainId } = useNetwork
+  // const { getChainId } = useNetwork
 
-  createComputed(() => console.debug(getChainId()))
+  // createComputed(() => console.debug(getChainId()))
 
   const name = 'Pera'
 

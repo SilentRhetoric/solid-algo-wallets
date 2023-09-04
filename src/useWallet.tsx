@@ -7,6 +7,7 @@ import useLedger from './wallets/ledger'
 import usePera from './wallets/pera'
 import useDefly from './wallets/defly'
 import useWalletConnect from './wallets/walletConnectV2'
+import useWalletConnectNew from './wallets/walletConnectV2_new'
 import useDaffi from './wallets/daffi'
 import useLocalnet from './wallets/localnet'
 import { audio } from './audio'
@@ -33,6 +34,7 @@ function useWallet() {
     useMyAlgo,
     useDaffi,
     useLocalnet,
+    useWalletConnectNew,
   ]
   const [activeWallet, setActiveWallet] = createSignal<WalletInterface>()
   const [walletName, setWalletName] = makePersisted(createSignal(''), { name: 'walletName' })

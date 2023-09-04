@@ -1,8 +1,7 @@
 import { Algodv2, waitForConfirmation } from 'algosdk'
-import { createComputed, createMemo, createRoot, createSignal } from 'solid-js'
+import { createMemo, createRoot, createSignal } from 'solid-js'
 import { AccountInfo, AssetData, ConfirmedTxn } from './types'
 import { makeAlgoAssetDataObj, makeAssetDataObj } from './utilities'
-// import appConfig from './networkConfig.json'
 
 const MAINNET_ALGOD_TOKEN = import.meta.env.VITE_MAINNET_ALGOD_TOKEN
 const MAINNET_ALGOD_SERVER = import.meta.env.VITE_MAINNET_ALGOD_SERVER
@@ -36,20 +35,23 @@ const LOCALNET_PERA_CHAIN_ID = import.meta.env.VITE_LOCALNET_PERA_CHAIN_ID
 const LOCALNET_BLOCK_EXPLORER = import.meta.env.LOCALNET_BLOCK_EXPLORER
 const LOCALNET_NFD_SERVER = import.meta.env.LOCALNET_NFD_SERVER
 
-// type Config = {
-//   // appID: number // The applicationID of the smart contract
-//   algodToken: string // The Algod API token to use for the server
-//   algodServer: string // The Algod API url to use
-//   algodPort: string // The Algod port to use for a localhost network
-//   blockExplorer: string // The block explorer to link out to
-//   peraChainId: 416001 | 416002 | 416003 | 4160 // Chain ID for Pera Wallet and forks (WalletConnect v1)
-//   walletConnect2ChainID: string // The algorand:... ID for each Algorand network
-// }
-// type ConfigDict = {
-//   [K in NetworkName]: Config
-// }
+type NetworkConfig = {
+  algodToken: string // The Algod API token to use for the server
+  algodServer: string // The Algod API URL to use
+  algodPort: number // The Algod port to use for a localhost network
+  peraChainId: 416001 | 416002 | 416003 | 4160 // Chain ID for Pera Wallet and forks (WalletConnect v1)
+  walletConnect2ChainID: string // The algorand:... ID for each Algorand network
+  blockExplorer: string // The block explorer to link out to
+  nfdServer: string // The API URL to do NFD lookups
+}
 
-const MAINNET_CONFIG = {
+export type NetworkName = 'MainNet' | 'TestNet' | 'BetaNet' | 'LocalNet'
+
+type NetworkConfigs = {
+  [K in NetworkName]: NetworkConfig
+}
+
+const MAINNET_CONFIG: NetworkConfig = {
   algodToken: MAINNET_ALGOD_TOKEN,
   algodServer: MAINNET_ALGOD_SERVER,
   algodPort: MAINNET_ALGOD_PORT,
@@ -58,7 +60,7 @@ const MAINNET_CONFIG = {
   peraChainId: MAINNET_PERA_CHAIN_ID,
   nfdServer: MAINNET_NFD_SERVER,
 }
-const TESTNET_CONFIG = {
+const TESTNET_CONFIG: NetworkConfig = {
   algodToken: TESTNET_ALGOD_TOKEN,
   algodServer: TESTNET_ALGOD_SERVER,
   algodPort: TESTNET_ALGOD_PORT,
@@ -67,7 +69,7 @@ const TESTNET_CONFIG = {
   peraChainId: TESTNET_PERA_CHAIN_ID,
   nfdServer: TESTNET_NFD_SERVER,
 }
-const BETANET_CONFIG = {
+const BETANET_CONFIG: NetworkConfig = {
   algodToken: BETANET_ALGOD_TOKEN,
   algodServer: BETANET_ALGOD_SERVER,
   algodPort: BETANET_ALGOD_PORT,
@@ -76,7 +78,7 @@ const BETANET_CONFIG = {
   peraChainId: BETANET_PERA_CHAIN_ID,
   nfdServer: BETANET_NFD_SERVER,
 }
-const LOCALNET_CONFIG = {
+const LOCALNET_CONFIG: NetworkConfig = {
   algodToken: LOCALNET_ALGOD_TOKEN,
   algodServer: LOCALNET_ALGOD_SERVER,
   algodPort: LOCALNET_ALGOD_PORT,
@@ -86,36 +88,26 @@ const LOCALNET_CONFIG = {
   nfdServer: LOCALNET_NFD_SERVER,
 }
 
-const networkConfigs = {
+const networkConfigs: NetworkConfigs = {
   MainNet: MAINNET_CONFIG,
   TestNet: TESTNET_CONFIG,
   BetaNet: BETANET_CONFIG,
   LocalNet: LOCALNET_CONFIG,
 }
 
-type NetworkName = 'MainNet' | 'TestNet' | 'BetaNet' | 'LocalNet'
-
-// const networkConfigs = appConfig as ConfigDict
-const networkNames = Object.keys(networkConfigs)
+const networkNames = Object.keys(networkConfigs) as NetworkName[]
 
 function useNetwork() {
   const [activeNetwork, setActiveNetwork] = createSignal<NetworkName>('TestNet')
 
-  createComputed(() => console.debug(activeNetwork()))
-
-  function getAlgodClient(network: NetworkName) {
-    const config = networkConfigs[network]
+  const algodClient = createMemo(() => {
+    const config = networkConfigs[activeNetwork()]
     const token = config.algodToken ? config.algodToken : ''
     const server = config.algodServer ? config.algodServer : ''
     const port = config.algodPort ? config.algodPort : ''
     return new Algodv2(token, server, port)
-  }
+  })
 
-  const algodClient = createMemo(() => getAlgodClient(activeNetwork()))
-
-  // function getAppID(): number {
-  //   return networkConfigs[activeNetwork()]!.appID
-  // }
   function getAddrUrl(addr: string): string {
     return `${networkConfigs[activeNetwork()].blockExplorer}/address/${addr}`
   }
@@ -125,7 +117,7 @@ function useNetwork() {
   function getTxUrl(txId: string): string {
     return `${networkConfigs[activeNetwork()].blockExplorer}/tx/${txId}`
   }
-  function getChainId(): 416001 | 416002 | 416003 | 4160 {
+  function getPeraChainId(): 416001 | 416002 | 416003 | 4160 {
     return networkConfigs[activeNetwork()].peraChainId
   }
   function getWalletConnect2ChainId(): string {
@@ -179,7 +171,7 @@ function useNetwork() {
     getAddrUrl,
     getAsaUrl,
     getTxUrl,
-    getChainId,
+    getChainId: getPeraChainId,
     getWalletConnect2ChainId,
     getAccountInfo,
     getAssetData,

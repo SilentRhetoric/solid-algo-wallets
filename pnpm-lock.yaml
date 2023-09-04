@@ -43,9 +43,6 @@ devDependencies:
   '@typescript-eslint/parser':
     specifier: ^6.5.0
     version: 6.5.0(eslint@8.48.0)(typescript@5.2.2)
-  '@walletconnect/client':
-    specifier: ^1.8.0
-    version: 1.8.0
   '@walletconnect/modal':
     specifier: ^2.6.1
     version: 2.6.1(react@18.2.0)
@@ -53,12 +50,6 @@ devDependencies:
     specifier: ^2.6.1
     version: 2.6.1(react@18.2.0)
   '@walletconnect/sign-client':
-    specifier: ^2.10.0
-    version: 2.10.0
-  '@walletconnect/types':
-    specifier: ^2.10.0
-    version: 2.10.0
-  '@walletconnect/utils':
     specifier: ^2.10.0
     version: 2.10.0
   concurrently:
