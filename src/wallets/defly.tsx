@@ -6,12 +6,12 @@ import { DeflyWalletConnect } from '@blockshake/defly-connect'
 import { WalletAccount, WalletInterface } from '../types'
 import type { Transaction } from 'algosdk'
 import { createRoot, createSignal } from 'solid-js'
-import useNetwork from '../useNetwork'
+// import useNetwork from '../useNetwork'
 
 function useDefly(): WalletInterface {
   const [walletClient, setWalletClient] = createSignal<DeflyWalletConnect>()
   const [accounts, setAccounts] = createSignal<WalletAccount[]>([])
-  const { getChainId } = useNetwork
+  // const { getChainId } = useNetwork
 
   const name = 'Defly'
 
@@ -40,7 +40,7 @@ function useDefly(): WalletInterface {
     if (client) {
       return client
     } else {
-      const DeflyWalletConnect = (await import('@blockshake/defly-connect')).DeflyWalletConnect
+      // const DeflyWalletConnect = (await import('@blockshake/defly-connect')).DeflyWalletConnect
       const client = new DeflyWalletConnect({
         // shouldShowSignTxnToast: false, // Enabled by default
         // chainId: getChainId(),

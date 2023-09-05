@@ -55,3 +55,19 @@ export type WalletInterface = {
   transactionSigner?: (txnGroup: Transaction[], indexesToSign: number[]) => Promise<Uint8Array[]>
   dispose?: () => void
 }
+
+export type NetworkConfig = {
+  algodToken: string // The Algod API token to use for the server
+  algodServer: string // The Algod API URL to use
+  algodPort: number // The Algod port to use for a localhost network
+  peraChainId: 416001 | 416002 | 416003 | 4160 // Chain ID for Pera Wallet and forks (WalletConnect v1)
+  walletConnect2ChainID: string // The algorand:... ID for each Algorand network
+  blockExplorer: string // The block explorer to link out to
+  nfdServer: string // The API URL to do NFD lookups
+}
+
+export type NetworkName = 'MainNet' | 'TestNet' | 'BetaNet' | 'LocalNet'
+
+export type NetworkConfigs = {
+  [K in NetworkName]: NetworkConfig
+}

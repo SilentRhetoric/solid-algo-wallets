@@ -14,7 +14,7 @@ The solid-algo-wallets library provides a simple, unified interface for integrat
 
 ## Quick start
 
-Install it:
+### Install it
 
 ```bash
 npm i solid-algo-wallets
@@ -24,11 +24,15 @@ yarn add solid-algo-wallets
 pnpm add solid-algo-wallets
 ```
 
-Use it:
+### Use it
 
 ```tsx
 import solid-algo-wallets from 'solid-algo-wallets'
 ```
+
+### See an example
+
+[Solid Algo Wallets Example](https://github.com/SilentRhetoric/solid-algo-wallets-example)
 
 ## Overview
 
@@ -44,11 +48,11 @@ Importing solid-algo-wallet into your app client provides convenient functions t
 - Sign transactions with the connected wallet account
 - Reconnect to the wallet on page reload
 
-## Example Application
+## Example SolidJS Application
 
-An example web application built with SolidJS which integrates solid-algo-wallets can be found here:
+An example single-page application built with SolidJS which integrates solid-algo-wallets can be found here:
 
-- [ ] TODO: Add example app link
+### [Solid Algo Wallets Example](https://github.com/SilentRhetoric/solid-algo-wallets-example)
 
 ## Design Decisions
 

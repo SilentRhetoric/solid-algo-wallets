@@ -1,11 +1,10 @@
 import { For, type Component, Show, createMemo, onMount } from 'solid-js'
-import logo from './logo.svg'
+import logo from './assets/logo.svg'
 import styles from './App.module.css'
-import { useWallet, useNetwork } from '../src'
 import { TransactionSignerAccount } from '@algorandfoundation/algokit-utils/types/account'
-import { AtomicTransactionComposer, makePaymentTxnWithSuggestedParamsFromObject } from 'algosdk'
 import * as algokit from '@algorandfoundation/algokit-utils'
-import { NetworkName } from 'src/useNetwork'
+import { AtomicTransactionComposer, makePaymentTxnWithSuggestedParamsFromObject } from 'algosdk'
+import { useWallet, useNetwork } from 'solid-algo-wallets'
 
 const App: Component = () => {
   const {

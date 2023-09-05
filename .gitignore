@@ -5,3 +5,6 @@ gitignore
 
 # tsup
 tsup.config.bundled_*.{m,c,}s
+
+# Local npm pack tarballs
+*.tgz

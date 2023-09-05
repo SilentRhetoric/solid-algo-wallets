@@ -5,15 +5,13 @@
 import { PeraWalletConnect } from '@perawallet/connect'
 import { WalletAccount, WalletInterface } from '../types'
 import type { Transaction } from 'algosdk'
-import { createComputed, createRoot, createSignal } from 'solid-js'
+import { createRoot, createSignal } from 'solid-js'
 // import useNetwork from '../useNetwork'
 
 function usePera(): WalletInterface {
   const [walletClient, setWalletClient] = createSignal<PeraWalletConnect>()
   const [accounts, setAccounts] = createSignal<WalletAccount[]>([])
   // const { getChainId } = useNetwork
-
-  // createComputed(() => console.debug(getChainId()))
 
   const name = 'Pera'
 
@@ -56,7 +54,7 @@ function usePera(): WalletInterface {
     if (client) {
       return client
     } else {
-      const PeraWalletConnect = (await import('@perawallet/connect')).PeraWalletConnect
+      // const PeraWalletConnect = (await import('@perawallet/connect')).PeraWalletConnect
       // Apparently Pera works better if you just don't specify the chainId at all
       // const chainId = getChainId()
       // console.debug(chainId)

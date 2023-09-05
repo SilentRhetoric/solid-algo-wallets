@@ -13,11 +13,21 @@
   "bugs": {
     "url": "https://github.com/SilentRhetoric/solid-algo-wallets/issues"
   },
+  "keywords": [
+    "solidjs",
+    "algorand",
+    "wallet",
+    "pera",
+    "defly",
+    "myalgo",
+    "exodus",
+    "ledger",
+    "walletconnect",
+    "algokit"
+  ],
   "files": [
     "dist"
   ],
-  "private": false,
-  "sideEffects": false,
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -40,9 +50,18 @@
     }
   },
   "typesVersions": {},
+  "packageManager": "pnpm@8.6.0",
+  "engines": {
+    "node": ">=18",
+    "pnpm": ">=8.6.0"
+  },
+  "private": false,
+  "sideEffects": false,
   "scripts": {
     "dev": "vite serve dev",
     "build": "tsup",
+    "pack": "npm pack",
+    "build+pack": "tsup && npm pack",
     "test": "concurrently pnpm:test:*",
     "test:client": "vitest",
     "test:ssr": "pnpm run test:client --mode ssr",
@@ -53,16 +72,17 @@
     "lint:types": "tsc --noEmit",
     "update-deps": "pnpm up -Li"
   },
-  "peerDependencies": {
-    "solid-js": "^1.7.0"
-  },
   "devDependencies": {
     "@blockshake/defly-connect": "^1.1.6",
     "@daffiwallet/connect": "^1.0.3",
     "@ledgerhq/hw-app-algorand": "^6.27.19",
     "@ledgerhq/hw-transport-webusb": "^6.27.19",
+    "@originjs/vite-plugin-commonjs": "^1.0.3",
     "@perawallet/connect": "^1.3.1",
     "@randlabs/myalgo-connect": "^1.4.2",
+    "@rollup/plugin-commonjs": "^25.0.4",
+    "@rollup/plugin-json": "^6.0.0",
+    "@rollup/plugin-node-resolve": "^15.2.1",
     "@typescript-eslint/eslint-plugin": "^6.5.0",
     "@typescript-eslint/parser": "^6.5.0",
     "@walletconnect/modal": "^2.6.1",
@@ -76,6 +96,8 @@
     "eslint-plugin-no-only-tests": "^3.1.0",
     "jsdom": "^22.1.0",
     "prettier": "3.0.1",
+    "rollup": "^3.28.1",
+    "rollup-preset-solid": "^2.0.1",
     "solid-js": "^1.7.11",
     "tsup": "^7.2.0",
     "tsup-preset-solid": "^2.1.0",
@@ -83,23 +105,6 @@
     "vite": "^4.4.9",
     "vite-plugin-solid": "^2.7.0",
     "vitest": "^0.34.3"
-  },
-  "keywords": [
-    "solidjs",
-    "algorand",
-    "wallet",
-    "pera",
-    "defly",
-    "myalgo",
-    "daffi",
-    "exodus",
-    "walletconnect",
-    "algokit"
-  ],
-  "packageManager": "pnpm@8.6.0",
-  "engines": {
-    "node": ">=18",
-    "pnpm": ">=8.6.0"
   },
   "dependencies": {
     "@algorandfoundation/algokit-utils": "^2.3.2",

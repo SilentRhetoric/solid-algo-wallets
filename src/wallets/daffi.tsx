@@ -6,12 +6,12 @@ import { DaffiWalletConnect } from '@daffiwallet/connect'
 import { WalletAccount, WalletInterface } from '../types'
 import type { Transaction } from 'algosdk'
 import { createRoot, createSignal } from 'solid-js'
-import useNetwork from '../useNetwork'
+// import useNetwork from '../useNetwork'
 
 function useDaffi(): WalletInterface {
   const [walletClient, setWalletClient] = createSignal<DaffiWalletConnect>()
   const [accounts, setAccounts] = createSignal<WalletAccount[]>([])
-  const { getChainId } = useNetwork
+  // const { getChainId } = useNetwork
 
   const name = 'Daffi'
 
@@ -191,7 +191,7 @@ function useDaffi(): WalletInterface {
     if (client) {
       return client
     } else {
-      const DaffiWalletConnect = (await import('@daffiwallet/connect')).DaffiWalletConnect
+      // const DaffiWalletConnect = (await import('@daffiwallet/connect')).DaffiWalletConnect
       const client = new DaffiWalletConnect({
         // shouldShowSignTxnToast: false, // Enabled by default
         // chainId: getChainId(),

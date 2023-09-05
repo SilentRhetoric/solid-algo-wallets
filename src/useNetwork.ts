@@ -1,6 +1,13 @@
 import { Algodv2, waitForConfirmation } from 'algosdk'
 import { createMemo, createRoot, createSignal } from 'solid-js'
-import { AccountInfo, AssetData, ConfirmedTxn } from './types'
+import {
+  AccountInfo,
+  AssetData,
+  ConfirmedTxn,
+  NetworkConfig,
+  NetworkConfigs,
+  NetworkName,
+} from './types'
 import { makeAlgoAssetDataObj, makeAssetDataObj } from './utilities'
 
 const MAINNET_ALGOD_TOKEN = import.meta.env.VITE_MAINNET_ALGOD_TOKEN
@@ -34,22 +41,6 @@ const LOCALNET_WALLETCONNECT_CHAIN_ID = import.meta.env.VITE_LOCALNET_WALLETCONN
 const LOCALNET_PERA_CHAIN_ID = import.meta.env.VITE_LOCALNET_PERA_CHAIN_ID
 const LOCALNET_BLOCK_EXPLORER = import.meta.env.LOCALNET_BLOCK_EXPLORER
 const LOCALNET_NFD_SERVER = import.meta.env.LOCALNET_NFD_SERVER
-
-type NetworkConfig = {
-  algodToken: string // The Algod API token to use for the server
-  algodServer: string // The Algod API URL to use
-  algodPort: number // The Algod port to use for a localhost network
-  peraChainId: 416001 | 416002 | 416003 | 4160 // Chain ID for Pera Wallet and forks (WalletConnect v1)
-  walletConnect2ChainID: string // The algorand:... ID for each Algorand network
-  blockExplorer: string // The block explorer to link out to
-  nfdServer: string // The API URL to do NFD lookups
-}
-
-export type NetworkName = 'MainNet' | 'TestNet' | 'BetaNet' | 'LocalNet'
-
-type NetworkConfigs = {
-  [K in NetworkName]: NetworkConfig
-}
 
 const MAINNET_CONFIG: NetworkConfig = {
   algodToken: MAINNET_ALGOD_TOKEN,
@@ -167,7 +158,6 @@ function useNetwork() {
     algodClient,
     activeNetwork,
     setActiveNetwork,
-    // getAppID,
     getAddrUrl,
     getAsaUrl,
     getTxUrl,
