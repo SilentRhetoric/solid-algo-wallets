@@ -18,7 +18,7 @@
   "dependencies": {
     "@algorandfoundation/algokit-utils": "^2.3.2",
     "algosdk": "2.4.0",
-    "solid-algo-wallets": "file:../solid-algo-wallets-0.0.1.tgz",
+    "solid-algo-wallets": "file:..",
     "solid-js": "^1.7.11"
   }
 }
