@@ -29,24 +29,13 @@
     "dist"
   ],
   "type": "module",
-  "main": "./dist/index.js",
+  "main": "./dist/index.umd.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "browser": {},
   "exports": {
-    "solid": {
-      "development": "./dist/dev.jsx",
-      "import": "./dist/index.jsx"
-    },
-    "development": {
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/dev.js"
-      }
-    },
-    "import": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.umd.cjs"
     }
   },
   "typesVersions": {},
@@ -59,7 +48,9 @@
   "sideEffects": false,
   "scripts": {
     "dev": "vite serve dev",
-    "build": "tsup",
+    "vitebuild": "rm -rf dist && vite build",
+    "esbuild": "esbuild src/index.tsx",
+    "build": "rm -rf dist && tsup",
     "pack": "npm pack",
     "build+pack": "tsup && npm pack",
     "test": "concurrently pnpm:test:*",

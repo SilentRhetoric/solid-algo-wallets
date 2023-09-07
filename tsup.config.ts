@@ -1,21 +1,59 @@
+// // https://github.com/evanw/esbuild/issues/1921
+
+// import { defineConfig } from 'tsup'
+
+// export default defineConfig({
+//   entry: ['src/index.tsx'],
+//   platform: 'browser',
+//   format: 'esm',
+//   banner: {
+//     js: `import { createRequire } from 'node:module';const require = createRequire(import.meta.url);`,
+//   },
+// })
+
+// const type = {
+//   dev: true,
+//   server: false,
+//   jsx: true,
+// }
+
+// const esbuildOptions = {
+//   banner: {
+//     js: `// BANNER START
+// const require = (await import("node:module")).createRequire(import.meta.url);
+// // BANNER END`,
+//   },
+// }
+
 import { defineConfig } from 'tsup'
 import * as preset from 'tsup-preset-solid'
 
+const entries = [
+  // default entry (index)
+  {
+    // entries with '.tsx' extension will have `solid` export condition generated
+    entry: 'src/index.tsx',
+    // will generate a separate development entry
+    dev_entry: true,
+  },
+]
+
 const preset_options: preset.PresetOptions = {
   // array or single object
-  entries: [
-    // default entry (index)
-    {
-      // entries with '.tsx' extension will have `solid` export condition generated
-      entry: 'src/index.tsx',
-      // will generate a separate development entry
-      dev_entry: true,
-    },
-  ],
+  entries,
   // Set to `true` to remove all `console.*` calls and `debugger` statements in prod builds
   drop_console: true,
   // Set to `true` to generate a CommonJS build alongside ESM
   // cjs: true,
+  //   modify_esbuild_options: () => {
+  //     return {
+  //       banner: {
+  //         js: `// BANNER START
+  // const require = (await import("node:module")).createRequire(import.meta.url);
+  // // BANNER END`,
+  //       },
+  //     }
+  //   },
 }
 
 const CI =
