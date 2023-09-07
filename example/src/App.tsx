@@ -4,7 +4,7 @@ import styles from './App.module.css'
 import { TransactionSignerAccount } from '@algorandfoundation/algokit-utils/types/account'
 import * as algokit from '@algorandfoundation/algokit-utils'
 import { AtomicTransactionComposer, makePaymentTxnWithSuggestedParamsFromObject } from 'algosdk'
-import { useWallet, useNetwork } from 'solid-algo-wallets'
+import { useWallet, useNetwork, NetworkName } from 'solid-algo-wallets'
 
 const App: Component = () => {
   const {
