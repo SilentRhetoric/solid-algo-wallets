@@ -1,6 +1,6 @@
 {
   "name": "solid-algo-wallets",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Integrate multiple Algorand wallets with a SolidJS web application client",
   "license": "MIT",
   "author": "Brian Whippo <dev@silentrhetoric.com>",
@@ -57,10 +57,8 @@
   "private": false,
   "sideEffects": false,
   "scripts": {
-    "dev": "vite serve dev",
+    "dev": "vite serve example",
     "build": "rm -rf dist && tsup",
-    "test": "concurrently pnpm:test:*",
-    "test:client": "vitest",
     "test:ssr": "pnpm run test:client --mode ssr",
     "prepublishOnly": "pnpm build",
     "format": "prettier --ignore-path .gitignore -w \"src/**/*.{js,ts,json,css,tsx,jsx}\" \"example/**/*.{js,ts,json,css,tsx,jsx}\"",
@@ -70,6 +68,7 @@
     "update-deps": "pnpm up -Li"
   },
   "devDependencies": {
+    "@types/node": "^20.6.0",
     "@typescript-eslint/eslint-plugin": "^6.5.0",
     "@typescript-eslint/parser": "^6.5.0",
     "concurrently": "^8.2.1",
@@ -84,8 +83,7 @@
     "tsup-preset-solid": "^2.1.0",
     "typescript": "^5.2.2",
     "vite": "^4.4.9",
-    "vite-plugin-solid": "^2.7.0",
-    "vitest": "^0.34.3"
+    "vite-plugin-solid": "^2.7.0"
   },
   "peerDependencies": {
     "solid-js": "^1.7.11"

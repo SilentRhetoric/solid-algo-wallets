@@ -28,13 +28,13 @@ function useWallet() {
   const walletInterfaces: WalletInterface[] = [
     useDefly,
     usePera,
-    useWalletConnect,
     useLedger,
     useExodus,
     useMyAlgo,
+    useWalletConnect,
+    useWalletConnectNew,
     // useDaffi,
     useLocalnet,
-    useWalletConnectNew,
   ]
   const [activeWallet, setActiveWallet] = createSignal<WalletInterface>()
   const [walletName, setWalletName] = makePersisted(createSignal(''), { name: 'walletName' })
