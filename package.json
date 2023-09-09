@@ -1,6 +1,6 @@
 {
   "name": "solid-algo-wallets",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Integrate multiple Algorand wallets with a SolidJS web application client",
   "license": "MIT",
   "author": "Brian Whippo <dev@silentrhetoric.com>",
@@ -57,13 +57,11 @@
   "private": false,
   "sideEffects": false,
   "scripts": {
-    "dev": "vite serve example",
     "build": "rm -rf dist && tsup",
-    "test:ssr": "pnpm run test:client --mode ssr",
     "prepublishOnly": "pnpm build",
     "format": "prettier --ignore-path .gitignore -w \"src/**/*.{js,ts,json,css,tsx,jsx}\" \"example/**/*.{js,ts,json,css,tsx,jsx}\"",
     "lint": "concurrently pnpm:lint:*",
-    "lint:code": "eslint --ignore-path .gitignore --max-warnings 0 src/**/*.{js,ts,tsx,jsx}",
+    "lint:code": "eslint --ignore-path .gitignore --max-warnings 0 \"src/**/*.{js,ts,tsx,jsx}\"",
     "lint:types": "tsc --noEmit",
     "update-deps": "pnpm up -Li"
   },
@@ -78,7 +76,7 @@
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-no-only-tests": "^3.1.0",
     "jsdom": "^22.1.0",
-    "prettier": "3.0.1",
+    "prettier": "3.0.3",
     "tsup": "^7.2.0",
     "tsup-preset-solid": "^2.1.0",
     "typescript": "^5.2.2",
@@ -102,12 +100,6 @@
     "@walletconnect/sign-client": "^2.10.0",
     "algosdk": "2.4.0",
     "buffer": "^6.0.3"
-  },
-  "pnpm": {
-    "patchedDependencies": {
-      "@walletconnect/window-getters@1.0.1": "patches/@walletconnect__window-getters@1.0.1.patch",
-      "@walletconnect/window-metadata@1.0.1": "patches/@walletconnect__window-metadata@1.0.1.patch"
-    }
   },
   "browser": {}
 }

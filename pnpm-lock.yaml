@@ -4,14 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-patchedDependencies:
-  '@walletconnect/window-getters@1.0.1':
-    hash: jcgbpmwvryglxw6jyu5xh5hmly
-    path: patches/@walletconnect__window-getters@1.0.1.patch
-  '@walletconnect/window-metadata@1.0.1':
-    hash: xlctyjdmytdbbwun43dcntljdq
-    path: patches/@walletconnect__window-metadata@1.0.1.patch
-
 importers:
 
   .:
@@ -90,8 +82,8 @@ importers:
         specifier: ^22.1.0
         version: 22.1.0
       prettier:
-        specifier: 3.0.1
-        version: 3.0.1
+        specifier: 3.0.3
+        version: 3.0.3
       tsup:
         specifier: ^7.2.0
         version: 7.2.0(typescript@5.2.2)
@@ -117,8 +109,8 @@ importers:
         specifier: 2.4.0
         version: 2.4.0
       solid-algo-wallets:
-        specifier: workspace:^
-        version: link:..
+        specifier: file:..
+        version: file:(react@18.2.0)(solid-js@1.7.11)
       solid-js:
         specifier: ^1.7.11
         version: 1.7.11
@@ -132,6 +124,12 @@ importers:
       postcss:
         specifier: ^8.4.29
         version: 8.4.29
+      prettier:
+        specifier: ^2.8.8
+        version: 2.8.8
+      prettier-plugin-tailwindcss:
+        specifier: ^0.2.8
+        version: 0.2.8(prettier@2.8.8)
       tailwindcss:
         specifier: ^3.3.3
         version: 3.3.3
@@ -1887,8 +1885,8 @@ packages:
       '@walletconnect/safe-json': 1.0.2
       '@walletconnect/time': 1.0.2
       '@walletconnect/types': 2.10.0
-      '@walletconnect/window-getters': 1.0.1(patch_hash=jcgbpmwvryglxw6jyu5xh5hmly)
-      '@walletconnect/window-metadata': 1.0.1(patch_hash=xlctyjdmytdbbwun43dcntljdq)
+      '@walletconnect/window-getters': 1.0.1
+      '@walletconnect/window-metadata': 1.0.1
       detect-browser: 5.3.0
       query-string: 7.1.3
       uint8arrays: 3.1.1
@@ -1909,8 +1907,8 @@ packages:
       '@walletconnect/safe-json': 1.0.2
       '@walletconnect/time': 1.0.2
       '@walletconnect/types': 2.9.1
-      '@walletconnect/window-getters': 1.0.1(patch_hash=jcgbpmwvryglxw6jyu5xh5hmly)
-      '@walletconnect/window-metadata': 1.0.1(patch_hash=xlctyjdmytdbbwun43dcntljdq)
+      '@walletconnect/window-getters': 1.0.1
+      '@walletconnect/window-metadata': 1.0.1
       detect-browser: 5.3.0
       query-string: 7.1.3
       uint8arrays: 3.1.1
@@ -1923,12 +1921,11 @@ packages:
     resolution: {integrity: sha512-xB0SQsLaleIYIkSsl43vm8EwETpBzJ2gnzk7e0wMF3ktqiTGS6TFHxcprMl5R44KKh4tCcHCJwolMCaDSwtAaA==}
     dev: false
 
-  /@walletconnect/window-getters@1.0.1(patch_hash=jcgbpmwvryglxw6jyu5xh5hmly):
+  /@walletconnect/window-getters@1.0.1:
     resolution: {integrity: sha512-vHp+HqzGxORPAN8gY03qnbTMnhqIwjeRJNOMOAzePRg4xVEEE2WvYsI9G2NMjOknA8hnuYbU3/hwLcKbjhc8+Q==}
     dependencies:
       tslib: 1.14.1
     dev: false
-    patched: true
 
   /@walletconnect/window-metadata@1.0.0:
     resolution: {integrity: sha512-9eFvmJxIKCC3YWOL97SgRkKhlyGXkrHwamfechmqszbypFspaSk+t2jQXAEU7YClHF6Qjw5eYOmy1//zFi9/GA==}
@@ -1936,13 +1933,12 @@ packages:
       '@walletconnect/window-getters': 1.0.0
     dev: false
 
-  /@walletconnect/window-metadata@1.0.1(patch_hash=xlctyjdmytdbbwun43dcntljdq):
+  /@walletconnect/window-metadata@1.0.1:
     resolution: {integrity: sha512-9koTqyGrM2cqFRW517BPY/iEtUDx2r1+Pwwu5m7sJ7ka79wi3EyqhqcICk/yDmv6jAS1rjKgTKXlEhanYjijcA==}
     dependencies:
-      '@walletconnect/window-getters': 1.0.1(patch_hash=jcgbpmwvryglxw6jyu5xh5hmly)
+      '@walletconnect/window-getters': 1.0.1
       tslib: 1.14.1
     dev: false
-    patched: true
 
   /abab@2.0.6:
     resolution: {integrity: sha512-j2afSsaIENvHZN2B8GOpF566vZ5WVk5opAiMTvWgaQT8DkbOqsTfvNAvHoRGU2zzP8cPoqys+xHTRDWW8L+/BA==}
@@ -3621,8 +3617,66 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /prettier@3.0.1:
-    resolution: {integrity: sha512-fcOWSnnpCrovBsmFZIGIy9UqK2FaI7Hqax+DIO0A9UxeVoY4iweyaFjS5TavZN97Hfehph0nhsZnjlVKzEQSrQ==}
+  /prettier-plugin-tailwindcss@0.2.8(prettier@2.8.8):
+    resolution: {integrity: sha512-KgPcEnJeIijlMjsA6WwYgRs5rh3/q76oInqtMXBA/EMcamrcYJpyhtRhyX1ayT9hnHlHTuO8sIifHF10WuSDKg==}
+    engines: {node: '>=12.17.0'}
+    peerDependencies:
+      '@ianvs/prettier-plugin-sort-imports': '*'
+      '@prettier/plugin-pug': '*'
+      '@shopify/prettier-plugin-liquid': '*'
+      '@shufo/prettier-plugin-blade': '*'
+      '@trivago/prettier-plugin-sort-imports': '*'
+      prettier: '>=2.2.0'
+      prettier-plugin-astro: '*'
+      prettier-plugin-css-order: '*'
+      prettier-plugin-import-sort: '*'
+      prettier-plugin-jsdoc: '*'
+      prettier-plugin-organize-attributes: '*'
+      prettier-plugin-organize-imports: '*'
+      prettier-plugin-style-order: '*'
+      prettier-plugin-svelte: '*'
+      prettier-plugin-twig-melody: '*'
+    peerDependenciesMeta:
+      '@ianvs/prettier-plugin-sort-imports':
+        optional: true
+      '@prettier/plugin-pug':
+        optional: true
+      '@shopify/prettier-plugin-liquid':
+        optional: true
+      '@shufo/prettier-plugin-blade':
+        optional: true
+      '@trivago/prettier-plugin-sort-imports':
+        optional: true
+      prettier-plugin-astro:
+        optional: true
+      prettier-plugin-css-order:
+        optional: true
+      prettier-plugin-import-sort:
+        optional: true
+      prettier-plugin-jsdoc:
+        optional: true
+      prettier-plugin-organize-attributes:
+        optional: true
+      prettier-plugin-organize-imports:
+        optional: true
+      prettier-plugin-style-order:
+        optional: true
+      prettier-plugin-svelte:
+        optional: true
+      prettier-plugin-twig-melody:
+        optional: true
+    dependencies:
+      prettier: 2.8.8
+    dev: true
+
+  /prettier@2.8.8:
+    resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
+    dev: true
+
+  /prettier@3.0.3:
+    resolution: {integrity: sha512-L/4pUDMxcNa8R/EthV08Zt42WBO4h1rarVtK0K+QJG0X187OLo7l699jWw0GKuwzkPQ//jMFA/8Xm6Fh3J/DAg==}
     engines: {node: '>=14'}
     hasBin: true
     dev: true
@@ -4554,3 +4608,35 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+  file:(react@18.2.0)(solid-js@1.7.11):
+    resolution: {directory: '', type: directory}
+    id: 'file:'
+    name: solid-algo-wallets
+    engines: {node: '>=18', pnpm: '>=8.6.0'}
+    peerDependencies:
+      solid-js: ^1.7.11
+    dependencies:
+      '@algorandfoundation/algokit-utils': 2.3.2
+      '@blockshake/defly-connect': 1.1.6(algosdk@2.4.0)
+      '@daffiwallet/connect': 1.0.3(algosdk@2.4.0)
+      '@ledgerhq/hw-app-algorand': 6.27.19
+      '@ledgerhq/hw-transport-webusb': 6.27.19
+      '@perawallet/connect': 1.3.1(algosdk@2.4.0)
+      '@randlabs/myalgo-connect': 1.4.2
+      '@solid-primitives/storage': 2.1.1(solid-js@1.7.11)
+      '@walletconnect/modal': 2.6.1(react@18.2.0)
+      '@walletconnect/modal-sign-html': 2.6.1(react@18.2.0)
+      '@walletconnect/sign-client': 2.10.0
+      algosdk: 2.4.0
+      buffer: 6.0.3
+      solid-js: 1.7.11
+    transitivePeerDependencies:
+      - '@react-native-async-storage/async-storage'
+      - bufferutil
+      - encoding
+      - lokijs
+      - react
+      - solid-start
+      - utf-8-validate
+    dev: false

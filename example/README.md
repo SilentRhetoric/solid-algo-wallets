@@ -1,12 +1,12 @@
 # Solid Algo Wallets Example
 
-![License](https://img.shields.io/github/license/SilentRhetoric/solid-algo-wallets-example)
+The Solid Algo Wallets Example provides a working demonstration of a SolidJS web application that integrates Algorand wallets via the [solid-algo-wallets](https://github.com/SilentRhetoric/solid-algo-wallets) library.
 
- The Solid Algo Wallets Example provides a working demonstration of a SolidJS web application that integrates Algorand wallets via the [solid-algo-wallets](https://github.com/SilentRhetoric/solid-algo-wallets) library.
+The example app utilizes [Vite](https://vitejs.dev), [Tailwind CSS](https://tailwindcss.com), and [daisyUI](https://daisyui.com) components, and can be used as a starting point to build your own dapp client.
 
 ## Quick Start
 
-### Install dependencies
+### Install Dependencies
 
 ```bash
 npm install
@@ -16,15 +16,19 @@ yarn install
 pnpm install
 ```
 
-### Available Scripts
+### Edit Environment Variables
 
-In the project directory, you can run:
+Rename `.env.template` to `.env` and provide the variables you want to use.
+
+**Important:** For WalletConnect v2, you need to obtain a Project ID from [WalletConnect Cloud](https://cloud.walletconnect.com/). This is a simple process with no waiting period. Every app needs its own unique Project ID to communicate via WalletConnect.
+
+### Run Development Server
+
+In the `example` directory, run:
 
 `npm run dev` or `npm start`
 
-Runs the app in the development mode.
-
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.  The page will reload if you make edits.
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser. The page will reload if you make edits.
 
 ## Deployment
 

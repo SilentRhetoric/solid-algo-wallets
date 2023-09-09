@@ -26,13 +26,11 @@ pnpm add solid-algo-wallets
 
 ### Use it
 
-```tsx
+```js
 import solid-algo-wallets from 'solid-algo-wallets'
 ```
 
 ### See an example
-
-[Solid Algo Wallets Example](https://github.com/SilentRhetoric/solid-algo-wallets-example)
 
 ## Overview
 
@@ -50,9 +48,9 @@ Importing solid-algo-wallet into your app client provides convenient functions t
 
 ## Example SolidJS Application
 
-An example single-page application built with SolidJS which integrates solid-algo-wallets can be found here:
+An example single-page application built with SolidJS which integrates solid-algo-wallets can be found in the `example` diectory of this repository:
 
-### [Solid Algo Wallets Example](https://github.com/SilentRhetoric/solid-algo-wallets-example)
+### [Solid Algo Wallets Example](https://github.com/SilentRhetoric/solid-algo-wallets/tree/main/example)
 
 ## Design Decisions
 
