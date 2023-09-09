@@ -1,5 +1,6 @@
 import { For, type Component, Show, createMemo, onMount, createSignal } from "solid-js"
-import logo from "./assets/logo.svg"
+import solidLogo from "./assets/logo.svg"
+import githubLogo from "./assets/github-mark.svg"
 import { TransactionSignerAccount } from "@algorandfoundation/algokit-utils/types/account"
 import * as algokit from "@algorandfoundation/algokit-utils"
 import { AtomicTransactionComposer, makePaymentTxnWithSuggestedParamsFromObject } from "algosdk"
@@ -52,14 +53,26 @@ const App: Component = () => {
   return (
     <div class="flex flex-col items-center justify-center p-4 text-center">
       <img
-        src={logo}
+        src={solidLogo}
         class="logo"
-        alt="logo"
+        alt="SolidJS logo"
       />
       <h1 class="text-3xl font-bold">Solid Algo Wallets</h1>
-      <h2 class="text-2xl">Example App</h2>
+      <div class="flex flex-row">
+        <h2 class="inline text-2xl">Example App</h2>
+        <a
+          href="https://github.com/SilentRhetoric/solid-algo-wallets-example"
+          target="_blank"
+        >
+          <img
+            src={githubLogo}
+            class="ml-2 h-8 w-8"
+            alt="GitHub logo"
+          />
+        </a>
+      </div>
       <select
-        class="select select-secondary m-1 w-60 max-w-xs"
+        class="select select-accent m-1 w-60 max-w-xs"
         onChange={(e) => setActiveNetwork(e.target.value as NetworkName)}
         value={activeNetwork()}
       >
@@ -76,7 +89,7 @@ const App: Component = () => {
         fallback={
           <>
             <p>Wallet Name: {walletName()}</p>
-            <p>Connected Address: {ellipseString(address())}</p>
+            <p>Address: {ellipseString(address())}</p>
             <button
               class="btn btn-accent m-1 w-60"
               onClick={() => sendTestTxn()}
@@ -113,7 +126,7 @@ const App: Component = () => {
         <For each={Object.values(walletInterfaces)}>
           {(wallet) => (
             <button
-              class="btn btn-secondary m-1 w-60"
+              class="btn btn-accent m-1 w-60"
               onClick={() => connectWallet(wallet)}
             >
               {wallet.image}

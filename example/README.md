@@ -2,7 +2,9 @@
 
 The Solid Algo Wallets Example provides a working demonstration of a SolidJS web application that integrates Algorand wallets via the [solid-algo-wallets](https://github.com/SilentRhetoric/solid-algo-wallets) library.
 
-The example app utilizes [Vite](https://vitejs.dev), [Tailwind CSS](https://tailwindcss.com), and [daisyUI](https://daisyui.com) components, and can be used as a starting point to build your own dapp client.
+The example app utilizes [Vite](https://vitejs.dev) dev tooling, [Tailwind CSS](https://tailwindcss.com) styles, and [daisyUI](https://daisyui.com) components.
+
+This work has been performed with support from the Algorand Foundation xGov Grants Program
 
 ## Quick Start
 
@@ -16,7 +18,7 @@ yarn install
 pnpm install
 ```
 
-### Edit Environment Variables
+### Environment Variables
 
 Rename `.env.template` to `.env` and provide the variables you want to use.
 

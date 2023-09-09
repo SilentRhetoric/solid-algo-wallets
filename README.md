@@ -1,16 +1,14 @@
-<p>
-  <img width="100%" src="https://assets.solidjs.com/banner?type=solid-algo-wallets&background=tiles&project=%20" alt="solid-algo-wallets">
-</p>
-
 # Solid Algo Wallets
 
-[![npm version](https://badge.fury.io/js/solid-algo-wallets.svg)](https://badge.fury.io/js/solid-algo-wallets)
+![solid-algo-wallets](https://assets.solidjs.com/banner?type=solid-algo-wallets&background=tiles&project=%20)
 
-![License](https://img.shields.io/github/license/SilentRhetoric/solid-algo-wallets)
+[![npm version](https://badge.fury.io/js/solid-algo-wallets.svg)](https://badge.fury.io/js/solid-algo-wallets) ![License](https://img.shields.io/github/license/SilentRhetoric/solid-algo-wallets)
 
 [![pnpm](https://img.shields.io/badge/maintained%20with-pnpm-cc00ff.svg?style=for-the-badge&logo=pnpm)](https://pnpm.io/)
 
-The solid-algo-wallets library provides a simple, unified interface for integrating Algorand wallets into a web application client built with SolidJS.
+The solid-algo-wallets library provides a simple, unified interface for integrating several Algorand wallets into a web application client built with SolidJS. A live demo can be found at <https://solid-algo-wallets-example.netlify.app>.
+
+This work has been performed with support from the Algorand Foundation xGov Grants Program
 
 ## Quick start
 
@@ -30,8 +28,6 @@ pnpm add solid-algo-wallets
 import solid-algo-wallets from 'solid-algo-wallets'
 ```
 
-### See an example
-
 ## Overview
 
 The solid-algo-wallets library provides a simple, unified interface for integrating Algorand wallets into a web application client built with SolidJS.
@@ -46,11 +42,41 @@ Importing solid-algo-wallet into your app client provides convenient functions t
 - Sign transactions with the connected wallet account
 - Reconnect to the wallet on page reload
 
+## Supported Wallets
+
+The following wallet interfaces are supported and the library provides icons & logos:
+
+| Wallet           | Site                         | Docs                                           |
+| ---------------- | ---------------------------- | ---------------------------------------------- |
+| Defly            | <https://defly.app>          | <https://docs.defly.app/app/overview>          |
+| Pera             | <https://perawallet.app>     | <https://docs.perawallet.app>                  |
+| Exodus           | <https://www.exodus.com>     | <https://docs.exodus.com>                      |
+| MyAlgo           | <https://connect.myalgo.com> | <https://connect.myalgo.com/docs/introduction> |
+| Ledger (via USB) | <https://perawallet.app>     | <https://docs.perawallet.app>                  |
+| WalletConnect    | <https://walletconnect.com>  | <https://docs.walletconnect.com/2.0/>          |
+
+### WalletConnect-compatible Wallets
+
+The following wallets are known to be compatible with the generic WalletConnect interface:
+| Wallet | Site | Docs |
+| ------------- | ---------------------------- | ---------------------------------------------- |
+| AWallet | <https://www.a-wallet.net/> | <https://github.com/scholtz/wallet/> |
+
+### Known Unsupported Wallets
+
+- [Daffi Wallet](https://www.daffione.com) is not able to establish a WalletConnect session as of Sep 9th, 2023 and so is not included. A Pull Request would be accepted when the wallet can be successfully connected.
+
+- [AlgoSigner](https://github.com/PureStake/algosigner/tree/develop) is no longer maintained by PureStake and so is not included.
+
 ## Example SolidJS Application
 
-An example single-page application built with SolidJS which integrates solid-algo-wallets can be found in the `example` diectory of this repository:
+A working demo can be found here:
 
-### [Solid Algo Wallets Example](https://github.com/SilentRhetoric/solid-algo-wallets/tree/main/example)
+<https://solid-algo-wallets-example.netlify.app>
+
+The example app code can be found here:
+
+<https://github.com/SilentRhetoric/solid-algo-wallets-example>
 
 ## Design Decisions
 
@@ -70,6 +96,14 @@ This design strives to implement the principle that blockchain apps should have 
 
 ### State Management
 
-The library is designed to manage state globally using SolidJS reactive roots on the client side of the web appplication. This allows a web app to consume/set the app's wallet state easily from anywhere in the code. However, this is not suitable for apps which utilize server-side rendering.
+The library is designed to manage state globally using SolidJS reactive roots on the client side of the web appplication. This allows a web app to consume/set the app's wallet state easily from anywhere in the code.
 
 This design was chosen both for simplicity and also because truly decentralized web apps should allow users to use the client without dependency on a back-end server. These wallet interfaces should be managed on the client so that an end user can download and install a web app locally and continue using it even if the host server becomes unavailable.
+
+> Note that this approach is not suitable for apps which utilize server-side rendering (SSR) and _will_ cause problems. It may be possible to provide the reactive roots to a context provider, but this is untested.
+
+### Additional Resources
+
+To learn more about SolidJS, visit <https://www.solidjs.com>.
+
+To learn more about developing on Algorand, visit <https://developer.algorand.org>.
