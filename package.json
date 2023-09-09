@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Integrate multiple Algorand wallets with a SolidJS web application client",
   "license": "MIT",
-  "author": "SilentRhetoric",
+  "author": "Brian Whippo <dev@silentrhetoric.com>",
   "contributors": [],
   "repository": {
     "type": "git",

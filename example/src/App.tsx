@@ -1,10 +1,13 @@
 import { For, type Component, Show, createMemo, onMount } from 'solid-js'
 import logo from './assets/logo.svg'
-import styles from './App.module.css'
 import { TransactionSignerAccount } from '@algorandfoundation/algokit-utils/types/account'
 import * as algokit from '@algorandfoundation/algokit-utils'
 import { AtomicTransactionComposer, makePaymentTxnWithSuggestedParamsFromObject } from 'algosdk'
 import { useWallet, useNetwork, NetworkName } from 'solid-algo-wallets'
+
+export function ellipseAddress(address = '', width = 4): string {
+  return `${address.slice(0, width)}...${address.slice(-width)}`
+}
 
 const App: Component = () => {
   const {
@@ -44,33 +47,51 @@ const App: Component = () => {
   }
 
   return (
-    <div class={styles.App}>
-      <img src={logo} class={styles.logo} alt="logo" />
-      <h1>Solid Algo Wallets</h1>
-      <h2>Example App</h2>
-      <p>Wallet Name: {walletName()}</p>
+    <div class="flex flex-col justify-center items-center text-center p-4">
+      <img src={logo} class="logo" alt="logo" />
+      <h1 class="text-3xl font-bold">Solid Algo Wallets</h1>
+      <h2 class="text-2xl">Example App</h2>
       <select
+        class="select select-secondary max-w-xs m-1 w-60"
         onChange={e => setActiveNetwork(e.target.value as NetworkName)}
         value={activeNetwork()}
       >
+        <option disabled selected>
+          Select Network
+        </option>
         <For each={networkNames}>{network => <option value={network}>{network}</option>}</For>
       </select>
-      <Show when={activeWallet() !== undefined}>
-        <button class={styles.button} onClick={() => sendTestTxn()}>
-          Send 0A Test Transaction
-        </button>
-        <button class={styles.button} onClick={() => disconnectWallet()}>
-          Disconnect Wallet
-        </button>
+      <Show
+        when={activeWallet() === undefined}
+        fallback={
+          <>
+            <p class="text-lg">Wallet Name: {walletName()}</p>
+            <p class="text-lg">Connected Address: {ellipseAddress(address())}</p>
+            <button
+              class="btn btn-accent m-1 w-60"
+              onClick={() => sendTestTxn()}
+              disabled={activeWallet() === undefined}
+            >
+              Send 0A Transaction
+            </button>
+            <button
+              class="btn btn-accent m-1 w-60"
+              onClick={() => disconnectWallet()}
+              disabled={activeWallet() === undefined}
+            >
+              Disconnect Wallet
+            </button>
+          </>
+        }
+      >
+        <For each={Object.values(walletInterfaces)}>
+          {wallet => (
+            <button class="btn btn-secondary m-1 w-60" onClick={() => connectWallet(wallet)}>
+              {wallet.image}
+            </button>
+          )}
+        </For>
       </Show>
-      <p>Connected Address: {address()}</p>
-      <For each={Object.values(walletInterfaces)}>
-        {wallet => (
-          <button class={styles.button} onClick={() => connectWallet(wallet)}>
-            {wallet.image}
-          </button>
-        )}
-      </For>
     </div>
   )
 }

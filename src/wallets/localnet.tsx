@@ -77,7 +77,7 @@ function useLocalnet(): WalletInterface {
   const [sandboxAccounts, setSandboxAccounts] = createSignal<SandboxAccount[]>([])
   const { setActiveNetwork } = useNetwork
 
-  const name = 'LocalNet'
+  const name = 'LocalNet KMD'
 
   function icon() {
     return <p>AlgoKit LocalNet</p>

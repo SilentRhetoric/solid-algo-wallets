@@ -80,7 +80,6 @@ function useWallet() {
         setAddress(accounts[0]?.address)
         setActiveWallet(wallet)
         setWalletName(wallet.name)
-        // setWalletStore("name", wallet.name)
       } else {
         resetApp()
       }
@@ -120,8 +119,6 @@ function useWallet() {
       resetApp()
     }
   }
-
-  // createComputed(on(address, () => console.debug("Address changed: ", address()), { defer: true }))
 
   async function signTransactions() {}
 
