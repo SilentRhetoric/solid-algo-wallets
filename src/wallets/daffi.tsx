@@ -91,8 +91,18 @@ function useDaffi(): WalletInterface {
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="daffi" transform="translate(2, 1)" fill-rule="nonzero">
+      <g
+        id="Page-1"
+        stroke="none"
+        stroke-width="1"
+        fill="none"
+        fill-rule="evenodd"
+      >
+        <g
+          id="daffi"
+          transform="translate(2, 1)"
+          fill-rule="nonzero"
+        >
           <path
             d="M80.9006522,75.8709661 L72.2032169,90.8651645 C79.6553035,86.5999702 85.8575401,80.3987339 90.1612451,72.9536492 C90.1687472,72.9406456 90.1762493,72.927642 90.1837515,72.9146383 L88.1811907,63.3214522 L80.9011523,75.8714662 L80.9006522,75.8709661 Z"
             id="Path"
@@ -171,7 +181,10 @@ function useDaffi(): WalletInterface {
           font-weight="normal"
           fill="#000000"
         >
-          <tspan x="114.064453" y="72">
+          <tspan
+            x="114.064453"
+            y="72"
+          >
             Daffi
           </tspan>
           <tspan
