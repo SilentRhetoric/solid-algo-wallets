@@ -120,7 +120,6 @@ function useWallet() {
     }
   }
 
-  async function signTransactions() {}
 
   async function transactionSigner(
     txnGroup: Transaction[],
@@ -149,7 +148,6 @@ function useWallet() {
     reconnectWallet,
     disconnectWallet,
     walletInterfaces,
-    signTransactions,
     transactionSigner,
   }
 }

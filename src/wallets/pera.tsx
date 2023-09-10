@@ -152,7 +152,6 @@ function usePera(): WalletInterface {
     signers?: string[]
   }
 
-  // Successfully tested with pay & app call groups 8/12/23, web & mobile
   async function transactionSigner(
     txnGroup: Transaction[],
     indexesToSign: number[],

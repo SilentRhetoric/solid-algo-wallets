@@ -115,7 +115,6 @@ function useLedger(): WalletInterface {
   //   authAccts.value = accounts.map((a) => a.address);
   // }
 
-  // Tested successfully with txn group calling hello 7/29/23
   async function transactionSigner(
     txnGroup: Transaction[],
     indexesToSign: number[],

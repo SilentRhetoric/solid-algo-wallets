@@ -54,7 +54,7 @@ const formatJsonRpcRequest = <T = any,>(method: string, params: T): JsonRpcReque
 function useWalletConnect(): WalletInterface {
   const [walletClient, setWalletClient] = createSignal<WalletConnectModalSign>()
   const [accounts, setAccounts] = createSignal<WalletAccount[]>([])
-  const { getWalletConnect2ChainId } = useNetwork
+  const { activeNetwork } = useNetwork
 
   const name = 'WalletConnect'
   const projectId = import.meta.env.VITE_WALLETCONNECT_PROJECT_ID
@@ -77,14 +77,17 @@ function useWalletConnect(): WalletInterface {
     relayUrl,
     modalOptions,
   }
+
+  // WalletConnect will not work on LocalNet
   enum algorand_chains {
-    Mainnet = 'algorand:wGHE2Pwdvd7S12BL5FaOP20EGYesN73k',
-    Testnet = 'algorand:SGO1GKSzyE7IEPItTxCByw9x8FmnrCDe',
-    Betanet = 'algorand:mFgazF-2uRS1tMiL9dsj01hJGySEmPN2',
+    MainNet = 'algorand:wGHE2Pwdvd7S12BL5FaOP20EGYesN73k',
+    TestNet = 'algorand:SGO1GKSzyE7IEPItTxCByw9x8FmnrCDe',
+    BetaNet = 'algorand:mFgazF-2uRS1tMiL9dsj01hJGySEmPN2',
+    LocalNet = '',
   }
 
   // Connecting to all three chains and filtering duplicate accounts returned
-  const chains = [algorand_chains.Mainnet, algorand_chains.Testnet, algorand_chains.Betanet]
+  const chains = [algorand_chains.MainNet, algorand_chains.TestNet, algorand_chains.BetaNet]
   const requiredNamespaces = {
     algorand: {
       chains: chains,
@@ -247,7 +250,7 @@ function useWalletConnect(): WalletInterface {
 
         // Sign the txns with the wallet
         const signingResult = await client.request<Array<string | null>>({
-          chainId: getWalletConnect2ChainId(),
+          chainId: algorand_chains[activeNetwork()],
           topic: session.topic,
           request,
         })

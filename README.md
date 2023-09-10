@@ -42,25 +42,31 @@ Importing solid-algo-wallet into your app client provides convenient functions t
 - Sign transactions with the connected wallet account
 - Reconnect to the wallet on page reload
 
+## Example SolidJS Application
+
+A working demo can be found here: <https://solid-algo-wallets-example.netlify.app>
+
+The example app code can be found here: <https://github.com/SilentRhetoric/solid-algo-wallets-example>
+
 ## Supported Wallets
 
 The following wallet interfaces are supported and the library provides icons & logos:
 
-| Wallet           | Site                         | Docs                                           |
-| ---------------- | ---------------------------- | ---------------------------------------------- |
-| Defly            | <https://defly.app>          | <https://docs.defly.app/app/overview>          |
-| Pera             | <https://perawallet.app>     | <https://docs.perawallet.app>                  |
-| Exodus           | <https://www.exodus.com>     | <https://docs.exodus.com>                      |
-| MyAlgo           | <https://connect.myalgo.com> | <https://connect.myalgo.com/docs/introduction> |
-| Ledger (via USB) | <https://perawallet.app>     | <https://docs.perawallet.app>                  |
-| WalletConnect    | <https://walletconnect.com>  | <https://docs.walletconnect.com/2.0/>          |
+| Wallet           | Home Page                            | Technical Docs                                                                                | Notes              |
+| ---------------- | ------------------------------------ | --------------------------------------------------------------------------------------------- | ------------------ |
+| Defly            | <https://defly.app>                  | <https://docs.defly.app/app/overview>                                                         | Mobile             |
+| Pera             | <https://perawallet.app>             | <https://docs.perawallet.app>                                                                 | Mobile & Web       |
+| Exodus           | <https://www.exodus.com>             | <https://docs.exodus.com>                                                                     | Chrome extension   |
+| MyAlgo           | <https://connect.myalgo.com>         | <https://connect.myalgo.com/docs/introduction>                                                | Web                |
+| Ledger | <https://www.ledger.com/ledger-live> | <https://github.com/LedgerHQ/ledger-live/tree/develop/libs/ledgerjs/packages/hw-app-algorand> | Direct USB in Chrome    |
+| WalletConnect    | <https://walletconnect.com>          | <https://docs.walletconnect.com/2.0/>                                                         | Any compatible app |
 
 ### WalletConnect-compatible Wallets
 
 The following wallets are known to be compatible with the generic WalletConnect interface:
-| Wallet | Site | Docs |
-| ------------- | ---------------------------- | ---------------------------------------------- |
-| AWallet | <https://www.a-wallet.net/> | <https://github.com/scholtz/wallet/> |
+| Wallet | Home Page | Technical Docs | Notes |
+| ------------- | ---------------------------- | ---------------------------------------------- | ---|
+| AWallet | <https://www.a-wallet.net/> | <https://github.com/scholtz/wallet/> | Manual connection to web wallet via copy/paste |
 
 ### Known Unsupported Wallets
 
@@ -68,19 +74,27 @@ The following wallets are known to be compatible with the generic WalletConnect 
 
 - [AlgoSigner](https://github.com/PureStake/algosigner/tree/develop) is no longer maintained by PureStake and so is not included.
 
-## Example SolidJS Application
+## How It Works
 
-A working demo can be found here:
+### Configuration
 
-<https://solid-algo-wallets-example.netlify.app>
+The library is configured using environment variables from a .env file in the project which uses the library. A .env.template file is provided in this repo. The following things are configurable:
 
-The example app code can be found here:
+- Algod server/token/port for each public network as well as AlgoKit LocalNet
+- Block explorer base URL to construct explorer links for each network. Supports AlgoExplorer and Dappflow linking.
+- Project ID, Project Name, Project Description, Project URL, and Project ICON for the Dapp's project on WalletConnect
 
-<https://github.com/SilentRhetoric/solid-algo-wallets-example>
+### useWallet
+
+The `useWallet` function returns a reactive root that provides the active wallet/metadata/address, methods to connect/reconnect/disconnect wallets, and a `transactionSigher` function that enables signing transactions with the connected wallet.
+
+### useNetwork
+
+The `useNetwork` function returns a reactive root that provides an alogd client for the selected network, as well as helpful functions to create URLs for block explorer linking.  
 
 ## Design Decisions
 
-The solid-algo-wallets library was designed in an opinionated way. The following are some of the design decisions and the rationale behind them.
+The solid-algo-wallets library was designed in an opinionated way to provide a large menu of wallet connectivity options in a simple package for developers and experience for users. Following are some of the design decisions and the rationale behind them.
 
 ### Signing Interface
 

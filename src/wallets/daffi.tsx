@@ -284,7 +284,6 @@ function useDaffi(): WalletInterface {
     signers?: string[]
   }
 
-  // Successfully tested 8/12/23 with pay txn group on iOS app
   async function transactionSigner(
     txnGroup: Transaction[],
     indexesToSign: number[],

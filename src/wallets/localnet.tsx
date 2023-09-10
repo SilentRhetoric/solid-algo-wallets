@@ -121,7 +121,6 @@ function useLocalnet(): WalletInterface {
     setAccounts([])
   }
 
-  // Tested successfully with txn group calling hello 7/29/23
   async function transactionSigner(
     txnGroup: Transaction[],
     indexesToSign: number[],

@@ -5,31 +5,25 @@ declare global {
     readonly VITE_MAINNET_ALGOD_TOKEN: string
     readonly VITE_MAINNET_ALGOD_SERVER: string
     readonly VITE_MAINNET_ALGOD_PORT: number
-    readonly VITE_MAINNET_WALLETCONNECT_CHAIN_ID: string
-    readonly VITE_MAINNET_PERA_CHAIN_ID: 416001 | 416002 | 416003 | 4160
-    readonly VITE_MAINNET_BLOCK_EXPLORER: string
-    readonly VITE_MAINNET_NFD_SERVER: string
+    readonly VITE_MAINNET_BLOCK_EXPLORER:
+      | 'https://mainnet-api.algonode.cloud'
+      | 'https://app.dappflow.org'
     readonly VITE_TESTNET_ALGOD_TOKEN: string
     readonly VITE_TESTNET_ALGOD_SERVER: string
     readonly VITE_TESTNET_ALGOD_PORT: number
-    readonly VITE_TESTNET_WALLETCONNECT_CHAIN_ID: string
-    readonly VITE_TESTNET_PERA_CHAIN_ID: 416001 | 416002 | 416003 | 4160
-    readonly VITE_TESTNET_BLOCK_EXPLORER: string
-    readonly VITE_TESTNET_NFD_SERVER: string
+    readonly VITE_TESTNET_BLOCK_EXPLORER:
+      | 'https://testnet.algoexplorer.io'
+      | 'https://app.dappflow.org'
     readonly VITE_BETANET_ALGOD_TOKEN: string
     readonly VITE_BETANET_ALGOD_SERVER: string
     readonly VITE_BETANET_ALGOD_PORT: number
-    readonly VITE_BETANET_WALLETCONNECT_CHAIN_ID: string
-    readonly VITE_BETANET_PERA_CHAIN_ID: 416001 | 416002 | 416003 | 4160
-    readonly VITE_BETANET_BLOCK_EXPLORER: string
-    readonly VITE_BETANET_NFD_SERVER: string
+    readonly VITE_BETANET_BLOCK_EXPLORER:
+      | 'https://betanet.algoexplorer.io'
+      | 'https://app.dappflow.org'
     readonly VITE_LOCALNET_ALGOD_TOKEN: string
     readonly VITE_LOCALNET_ALGOD_SERVER: string
     readonly VITE_LOCALNET_ALGOD_PORT: number
-    readonly VITE_LOCALNET_WALLETCONNECT_CHAIN_ID: string
-    readonly VITE_LOCALNET_PERA_CHAIN_ID: 416001 | 416002 | 416003 | 4160
-    readonly VITE_LOCALNET_BLOCK_EXPLORER: string
-    readonly VITE_LOCALNET_NFD_SERVER: string
+    readonly VITE_LOCALNET_BLOCK_EXPLORER: 'https://app.dappflow.org'
     readonly VITE_WALLETCONNECT_PROJECT_ID: string
     readonly VITE_WALLETCONNECT_PROJECT_NAME: string
     readonly VITE_WALLETCONNECT_PROJECT_DESCRIPTION: string

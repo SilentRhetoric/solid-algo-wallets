@@ -20,5 +20,5 @@
     "rootDir": ".",
     "outDir": "dist"
   },
-  "exclude": ["node_modules", "dist", "example"]
+  "exclude": ["node_modules", "dist"]
 }
