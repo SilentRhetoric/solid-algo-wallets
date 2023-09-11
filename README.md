@@ -4,7 +4,7 @@
 
 The solid-algo-wallets library provides a simple, unified interface for integrating several Algorand wallets into a web application client built with SolidJS. A live demo can be found at <https://solid-algo-wallets-example.netlify.app>.
 
-This work has been performed with support from the Algorand Foundation xGov Grants Program
+This work has been performed with support from the Algorand Foundation xGov Grants Program.
 
 ## Quick start
 
