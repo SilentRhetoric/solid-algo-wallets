@@ -1,5 +1,7 @@
 # Solid Algo Wallets
 
+![solid-algo-wallets](https://assets.solidjs.com/banner?type=solid-algo-wallets&background=tiles&project=%20)
+
 The solid-algo-wallets library provides a simple, unified interface for integrating several Algorand wallets into a web application client built with SolidJS. A live demo can be found at <https://solid-algo-wallets-example.netlify.app>.
 
 This work has been performed with support from the Algorand Foundation xGov Grants Program
@@ -46,14 +48,14 @@ The example app code can be found here: <https://github.com/SilentRhetoric/solid
 
 The following wallet interfaces are supported and the library provides icons & logos:
 
-| Wallet           | Home Page                            | Technical Docs                                                                                | Notes              |
-| ---------------- | ------------------------------------ | --------------------------------------------------------------------------------------------- | ------------------ |
-| Defly            | <https://defly.app>                  | <https://docs.defly.app/app/overview>                                                         | Mobile             |
-| Pera             | <https://perawallet.app>             | <https://docs.perawallet.app>                                                                 | Mobile & Web       |
-| Exodus           | <https://www.exodus.com>             | <https://docs.exodus.com>                                                                     | Chrome extension   |
-| MyAlgo           | <https://connect.myalgo.com>         | <https://connect.myalgo.com/docs/introduction>                                                | Web                |
-| Ledger | <https://www.ledger.com/ledger-live> | <https://github.com/LedgerHQ/ledger-live/tree/develop/libs/ledgerjs/packages/hw-app-algorand> | Direct USB in Chrome    |
-| WalletConnect    | <https://walletconnect.com>          | <https://docs.walletconnect.com/2.0/>                                                         | Any compatible app |
+| Wallet        | Home Page                            | Technical Docs                                                                                | Notes                |
+| ------------- | ------------------------------------ | --------------------------------------------------------------------------------------------- | -------------------- |
+| Defly         | <https://defly.app>                  | <https://docs.defly.app/app/overview>                                                         | Mobile               |
+| Pera          | <https://perawallet.app>             | <https://docs.perawallet.app>                                                                 | Mobile & Web         |
+| Exodus        | <https://www.exodus.com>             | <https://docs.exodus.com>                                                                     | Chrome extension     |
+| MyAlgo        | <https://connect.myalgo.com>         | <https://connect.myalgo.com/docs/introduction>                                                | Web                  |
+| Ledger        | <https://www.ledger.com/ledger-live> | <https://github.com/LedgerHQ/ledger-live/tree/develop/libs/ledgerjs/packages/hw-app-algorand> | Direct USB in Chrome |
+| WalletConnect | <https://walletconnect.com>          | <https://docs.walletconnect.com/2.0/>                                                         | Any compatible app   |
 
 ### WalletConnect-compatible Wallets
 
@@ -84,7 +86,7 @@ The `useWallet` function returns a reactive root that provides the active wallet
 
 ### useNetwork
 
-The `useNetwork` function returns a reactive root that provides an alogd client for the selected network, as well as helpful functions to create URLs for block explorer linking.  
+The `useNetwork` function returns a reactive root that provides an alogd client for the selected network, as well as helpful functions to create URLs for block explorer linking.
 
 ## Design Decisions
 
