@@ -1,12 +1,12 @@
-import { For, type Component, Show, createMemo, onMount, createSignal } from "solid-js"
-import solidLogo from "./assets/logo.svg"
-import githubLogo from "./assets/github-mark.svg"
-import { TransactionSignerAccount } from "@algorandfoundation/algokit-utils/types/account"
-import * as algokit from "@algorandfoundation/algokit-utils"
-import { AtomicTransactionComposer, makePaymentTxnWithSuggestedParamsFromObject } from "algosdk"
-import { useWallet, useNetwork, NetworkName } from "solid-algo-wallets"
+import { For, type Component, Show, createMemo, onMount, createSignal } from 'solid-js'
+import solidLogo from './assets/logo.svg'
+import githubLogo from './assets/github-mark.svg'
+import { TransactionSignerAccount } from '@algorandfoundation/algokit-utils/types/account'
+import * as algokit from '@algorandfoundation/algokit-utils'
+import { AtomicTransactionComposer, makePaymentTxnWithSuggestedParamsFromObject } from 'algosdk'
+import { useWallet, useNetwork, NetworkName } from 'solid-algo-wallets'
 
-export function ellipseString(string = "", width = 4): string {
+export function ellipseString(string = '', width = 4): string {
   return `${string.slice(0, width)}...${string.slice(-width)}`
 }
 
@@ -22,7 +22,7 @@ const App: Component = () => {
     transactionSigner,
   } = useWallet
   const { algodClient, activeNetwork, setActiveNetwork, networkNames, getTxUrl } = useNetwork
-  const [confirmedTxn, setConfirmedTxn] = createSignal("")
+  const [confirmedTxn, setConfirmedTxn] = createSignal('')
 
   onMount(() => reconnectWallet())
 
@@ -32,7 +32,7 @@ const App: Component = () => {
   }))
 
   async function sendTestTxn() {
-    setConfirmedTxn("")
+    setConfirmedTxn('')
     const suggestedParams = await algodClient().getTransactionParams().do()
 
     const payTxn = makePaymentTxnWithSuggestedParamsFromObject({
@@ -46,7 +46,7 @@ const App: Component = () => {
     const atc = new AtomicTransactionComposer()
     atc.addTransaction(txn)
     const result = await atc.execute(algodClient(), 4)
-    console.log("Txn confirmed: ", result)
+    console.log('Txn confirmed: ', result)
     setConfirmedTxn(result.txIDs[0])
   }
 
@@ -73,7 +73,7 @@ const App: Component = () => {
       </div>
       <select
         class="select select-accent m-1 w-60 max-w-xs"
-        onChange={(e) => setActiveNetwork(e.target.value as NetworkName)}
+        onChange={e => setActiveNetwork(e.target.value as NetworkName)}
         value={activeNetwork()}
       >
         <option
@@ -82,7 +82,7 @@ const App: Component = () => {
         >
           Select Network
         </option>
-        <For each={networkNames}>{(network) => <option value={network}>{network}</option>}</For>
+        <For each={networkNames}>{network => <option value={network}>{network}</option>}</For>
       </select>
       <Show
         when={activeWallet() === undefined}
@@ -124,7 +124,7 @@ const App: Component = () => {
         }
       >
         <For each={Object.values(walletInterfaces)}>
-          {(wallet) => (
+          {wallet => (
             <button
               class="btn btn-accent m-1 w-60"
               onClick={() => connectWallet(wallet)}

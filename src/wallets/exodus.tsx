@@ -96,7 +96,12 @@ function useExodus(): WalletInterface {
           />
         </mask>
         <g mask="url(#mask0_1661_295)">
-          <rect x="3.75024" width="292.5" height="300" fill="url(#paint4_linear_1661_295)" />
+          <rect
+            x="3.75024"
+            width="292.5"
+            height="300"
+            fill="url(#paint4_linear_1661_295)"
+          />
         </g>
         <defs>
           <linearGradient
@@ -108,7 +113,10 @@ function useExodus(): WalletInterface {
             gradientUnits="userSpaceOnUse"
           >
             <stop stop-color="#0B46F9" />
-            <stop offset="1" stop-color="#BBFBE0" />
+            <stop
+              offset="1"
+              stop-color="#BBFBE0"
+            />
           </linearGradient>
           <linearGradient
             id="paint1_linear_1661_295"
@@ -119,7 +127,10 @@ function useExodus(): WalletInterface {
             gradientUnits="userSpaceOnUse"
           >
             <stop stop-color="#0B46F9" />
-            <stop offset="1" stop-color="#BBFBE0" />
+            <stop
+              offset="1"
+              stop-color="#BBFBE0"
+            />
           </linearGradient>
           <linearGradient
             id="paint2_linear_1661_295"
@@ -130,7 +141,10 @@ function useExodus(): WalletInterface {
             gradientUnits="userSpaceOnUse"
           >
             <stop stop-color="#0B46F9" />
-            <stop offset="1" stop-color="#BBFBE0" />
+            <stop
+              offset="1"
+              stop-color="#BBFBE0"
+            />
           </linearGradient>
           <linearGradient
             id="paint3_linear_1661_295"
@@ -141,7 +155,10 @@ function useExodus(): WalletInterface {
             gradientUnits="userSpaceOnUse"
           >
             <stop stop-color="#0B46F9" />
-            <stop offset="1" stop-color="#BBFBE0" />
+            <stop
+              offset="1"
+              stop-color="#BBFBE0"
+            />
           </linearGradient>
           <linearGradient
             id="paint4_linear_1661_295"
@@ -151,8 +168,16 @@ function useExodus(): WalletInterface {
             y2="178.125"
             gradientUnits="userSpaceOnUse"
           >
-            <stop offset="0.119792" stop-color="#8952FF" stop-opacity="0.87" />
-            <stop offset="1" stop-color="#DABDFF" stop-opacity="0" />
+            <stop
+              offset="0.119792"
+              stop-color="#8952FF"
+              stop-opacity="0.87"
+            />
+            <stop
+              offset="1"
+              stop-color="#DABDFF"
+              stop-opacity="0"
+            />
           </linearGradient>
         </defs>
       </svg>
@@ -194,7 +219,12 @@ function useExodus(): WalletInterface {
         />
       </mask>
       <g mask="url(#mask0_1661_261)">
-        <rect x="2.56689" width="200.203" height="205.337" fill="url(#paint4_linear_1661_261)" />
+        <rect
+          x="2.56689"
+          width="200.203"
+          height="205.337"
+          fill="url(#paint4_linear_1661_261)"
+        />
       </g>
       <path
         d="M378.076 56.4673V74.4188H295.347V92.7878H365.639V110.739H295.347V130.917H378.076V148.869H274.124V56.4673H378.076Z"
@@ -230,7 +260,10 @@ function useExodus(): WalletInterface {
           gradientUnits="userSpaceOnUse"
         >
           <stop stop-color="#0B46F9" />
-          <stop offset="1" stop-color="#BBFBE0" />
+          <stop
+            offset="1"
+            stop-color="#BBFBE0"
+          />
         </linearGradient>
         <linearGradient
           id="paint1_linear_1661_261"
@@ -241,7 +274,10 @@ function useExodus(): WalletInterface {
           gradientUnits="userSpaceOnUse"
         >
           <stop stop-color="#0B46F9" />
-          <stop offset="1" stop-color="#BBFBE0" />
+          <stop
+            offset="1"
+            stop-color="#BBFBE0"
+          />
         </linearGradient>
         <linearGradient
           id="paint2_linear_1661_261"
@@ -252,7 +288,10 @@ function useExodus(): WalletInterface {
           gradientUnits="userSpaceOnUse"
         >
           <stop stop-color="#0B46F9" />
-          <stop offset="1" stop-color="#BBFBE0" />
+          <stop
+            offset="1"
+            stop-color="#BBFBE0"
+          />
         </linearGradient>
         <linearGradient
           id="paint3_linear_1661_261"
@@ -263,7 +302,10 @@ function useExodus(): WalletInterface {
           gradientUnits="userSpaceOnUse"
         >
           <stop stop-color="#0B46F9" />
-          <stop offset="1" stop-color="#BBFBE0" />
+          <stop
+            offset="1"
+            stop-color="#BBFBE0"
+          />
         </linearGradient>
         <linearGradient
           id="paint4_linear_1661_261"
@@ -273,8 +315,16 @@ function useExodus(): WalletInterface {
           y2="121.919"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.119792" stop-color="#8952FF" stop-opacity="0.87" />
-          <stop offset="1" stop-color="#DABDFF" stop-opacity="0" />
+          <stop
+            offset="0.119792"
+            stop-color="#8952FF"
+            stop-opacity="0.87"
+          />
+          <stop
+            offset="1"
+            stop-color="#DABDFF"
+            stop-opacity="0"
+          />
         </linearGradient>
       </defs>
     </svg>

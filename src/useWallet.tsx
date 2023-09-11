@@ -120,7 +120,6 @@ function useWallet() {
     }
   }
 
-
   async function transactionSigner(
     txnGroup: Transaction[],
     indexesToSign: number[],
