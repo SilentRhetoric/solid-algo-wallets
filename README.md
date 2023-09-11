@@ -1,11 +1,5 @@
 # Solid Algo Wallets
 
-![solid-algo-wallets](https://assets.solidjs.com/banner?type=solid-algo-wallets&background=tiles&project=%20)
-
-[![npm version](https://badge.fury.io/js/solid-algo-wallets.svg)](https://badge.fury.io/js/solid-algo-wallets) ![License](https://img.shields.io/github/license/SilentRhetoric/solid-algo-wallets)
-
-[![pnpm](https://img.shields.io/badge/maintained%20with-pnpm-cc00ff.svg?style=for-the-badge&logo=pnpm)](https://pnpm.io/)
-
 The solid-algo-wallets library provides a simple, unified interface for integrating several Algorand wallets into a web application client built with SolidJS. A live demo can be found at <https://solid-algo-wallets-example.netlify.app>.
 
 This work has been performed with support from the Algorand Foundation xGov Grants Program
