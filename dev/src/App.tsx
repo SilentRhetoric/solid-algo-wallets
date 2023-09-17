@@ -129,7 +129,7 @@ const App: Component = () => {
               class="btn btn-accent m-1 w-60"
               onClick={() => connectWallet(wallet)}
             >
-              {wallet.image}
+              {wallet.image()}
             </button>
           )}
         </For>

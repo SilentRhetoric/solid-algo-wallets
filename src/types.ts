@@ -43,7 +43,7 @@ export type WalletAccount = {
 export type WalletInterface = {
   name: string
   icon: () => JSX.Element
-  image: JSX.Element
+  image: () => JSX.Element
   accounts: Accessor<WalletAccount[]>
   connect: (onDisconnect: () => void) => Promise<WalletAccount[]>
   disconnect: (onDisconnect: () => void) => void

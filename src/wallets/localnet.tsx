@@ -82,7 +82,10 @@ function useLocalnet(): WalletInterface {
   function icon() {
     return <p>AlgoKit LocalNet</p>
   }
-  const image = <p>AlgoKit LocalNet</p>
+
+  function image() {
+    return <p>AlgoKit LocalNet</p>
+  }
 
   async function connect(): Promise<WalletAccount[]> {
     console.debug('Localnet: connect')

@@ -1,6 +1,6 @@
 {
   "name": "solid-algo-wallets",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Integrate multiple Algorand wallets with a SolidJS web application client",
   "license": "MIT",
   "author": "Brian Whippo <dev@silentrhetoric.com>",
@@ -57,7 +57,6 @@
   "private": false,
   "sideEffects": false,
   "scripts": {
-    "dev": "vite serve dev --host",
     "build": "tsup",
     "clean": "rm -rf node_modules && rm -rf dist",
     "prepublishOnly": "pnpm build",
