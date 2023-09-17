@@ -47,7 +47,9 @@ const App: Component = () => {
     atc.addTransaction(txn)
     const result = await atc.execute(algodClient(), 4)
     console.log('Txn confirmed: ', result)
-    setConfirmedTxn(result.txIDs[0])
+    if (result.txIDs[0] !== undefined) {
+      setConfirmedTxn(result.txIDs[0])
+    }
   }
 
   return (
