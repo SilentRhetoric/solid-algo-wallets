@@ -9,6 +9,7 @@ import useDefly from './wallets/defly'
 import useWalletConnect from './wallets/walletConnectV2'
 import useWalletConnectNew from './wallets/walletConnectV2_new'
 // import useDaffi from './wallets/daffi'
+import useMetaMask from './wallets/metamask'
 import useLocalnet from './wallets/localnet'
 import { audio } from './audio'
 import { Transaction } from 'algosdk'
@@ -34,6 +35,7 @@ function useWallet() {
     useWalletConnect,
     useWalletConnectNew,
     // useDaffi,
+    useMetaMask,
     useLocalnet,
   ]
   const [activeWallet, setActiveWallet] = createSignal<WalletInterface>()
