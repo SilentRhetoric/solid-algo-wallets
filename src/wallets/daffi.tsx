@@ -18,7 +18,6 @@ function useDaffi(): WalletInterface {
   function icon() {
     return (
       <svg
-        width="100%"
         height="32"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 1999.44 1999.44"
@@ -86,8 +85,7 @@ function useDaffi(): WalletInterface {
   function image() {
     return (
       <svg
-        width="100%"
-        height="32px"
+        height="32"
         viewBox="0 0 409 100"
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"

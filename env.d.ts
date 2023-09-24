@@ -29,21 +29,20 @@ declare global {
     readonly VITE_WALLETCONNECT_PROJECT_DESCRIPTION: string
     readonly VITE_WALLETCONNECT_PROJECT_URL: string
     readonly VITE_WALLETCONNECT_PROJECT_ICON: string
+    NODE_ENV: 'production' | 'development'
+    PROD: boolean
+    DEV: boolean
   }
   interface ImportMeta {
-    env: {
-      NODE_ENV: 'production' | 'development'
-      PROD: boolean
-      DEV: boolean
-    }
+    readonly env: ImportMetaEnv
   }
-  namespace NodeJS {
-    interface ProcessEnv {
-      NODE_ENV: 'production' | 'development'
-      PROD: boolean
-      DEV: boolean
-    }
-  }
+  // namespace NodeJS {
+  //   interface ProcessEnv {
+  //     NODE_ENV: 'production' | 'development'
+  //     PROD: boolean
+  //     DEV: boolean
+  //   }
+  // }
 }
 
 export {}

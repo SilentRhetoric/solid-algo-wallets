@@ -15,7 +15,7 @@
     "noUncheckedIndexedAccess": true,
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
-    "types": [],
+    "types": ["vite/client"],
     "baseUrl": ".",
     "rootDir": ".",
     "outDir": "dist"

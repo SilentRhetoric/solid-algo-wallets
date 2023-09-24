@@ -63,7 +63,6 @@ function useExodus(): WalletInterface {
   function icon() {
     return (
       <svg
-        width="100%"
         height="32"
         viewBox="0 0 300 300"
         fill="none"
@@ -187,7 +186,6 @@ function useExodus(): WalletInterface {
   function image() {
     return (
       <svg
-        width="100%"
         height="32"
         viewBox="0 0 1000 206"
         fill="none"

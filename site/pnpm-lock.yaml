@@ -11,9 +11,6 @@ dependencies:
   algosdk:
     specifier: 2.4.0
     version: 2.4.0
-  solid-algo-wallets:
-    specifier: link:..
-    version: link:..
   solid-js:
     specifier: ^1.7.11
     version: 1.7.11

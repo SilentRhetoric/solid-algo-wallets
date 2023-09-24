@@ -4,7 +4,7 @@ import githubLogo from './assets/github-mark.svg'
 import { TransactionSignerAccount } from '@algorandfoundation/algokit-utils/types/account'
 import * as algokit from '@algorandfoundation/algokit-utils'
 import { AtomicTransactionComposer, makePaymentTxnWithSuggestedParamsFromObject } from 'algosdk'
-import { useWallet, useNetwork, NetworkName } from 'solid-algo-wallets'
+import { useWallet, useNetwork, NetworkName } from '../../src/index'
 // import {
 //   assetOptIn,
 //   assetOptOut,
@@ -181,7 +181,7 @@ const App: Component = () => {
         </a>
       </div>
       <select
-        class="select select-accent m-1 w-60 max-w-xs"
+        class="select select-accent m-1 max-w-xs"
         onChange={e => setActiveNetwork(e.target.value as NetworkName)}
         value={activeNetwork()}
       >
@@ -232,16 +232,26 @@ const App: Component = () => {
           </>
         }
       >
-        <For each={Object.values(walletInterfaces)}>
-          {wallet => (
-            <button
-              class="btn btn-accent m-1 w-60"
-              onClick={() => connectWallet(wallet)}
-            >
-              {wallet.image()}
-            </button>
-          )}
-        </For>
+        <div class="flex flex-col gap-1">
+          <For each={Object.values(walletInterfaces)}>
+            {wallet => (
+              <div class="flex gap-1">
+                <button
+                  class="btn btn-accent w-20"
+                  onClick={() => connectWallet(wallet)}
+                >
+                  {wallet.icon()}
+                </button>
+                <button
+                  class="btn btn-accent w-60"
+                  onClick={() => connectWallet(wallet)}
+                >
+                  {wallet.image()}
+                </button>
+              </div>
+            )}
+          </For>
+        </div>
       </Show>
     </div>
   )
