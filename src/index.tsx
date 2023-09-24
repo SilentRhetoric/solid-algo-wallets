@@ -1,3 +1,3 @@
-export { default as useWallet } from './useWallet'
-export { default as useNetwork } from './useNetwork'
+export { default as UseWallet } from './useWallet'
+export { default as UseNetwork } from './useNetwork'
 export * from './types'

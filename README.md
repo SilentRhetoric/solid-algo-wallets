@@ -50,14 +50,15 @@ The example app code can be found here: <https://github.com/SilentRhetoric/solid
 
 The following wallet interfaces are supported and the library provides icons & logos:
 
-| Wallet        | Home Page                            | Technical Docs                                                                                | Notes                          |
-| ------------- | ------------------------------------ | --------------------------------------------------------------------------------------------- | ------------------------------ |
-| Defly         | <https://defly.app>                  | <https://docs.defly.app/app/overview>                                                         | Mobile                         |
-| Pera          | <https://perawallet.app>             | <https://docs.perawallet.app>                                                                 | Mobile & Web                   |
-| Exodus        | <https://www.exodus.com>             | <https://docs.exodus.com>                                                                     | Chrome extension, MainNet only |
-| MyAlgo        | <https://connect.myalgo.com>         | <https://connect.myalgo.com/docs/introduction>                                                | Web                            |
-| Ledger        | <https://www.ledger.com/ledger-live> | <https://github.com/LedgerHQ/ledger-live/tree/develop/libs/ledgerjs/packages/hw-app-algorand> | Direct USB in Chrome           |
-| WalletConnect | <https://walletconnect.com>          | <https://docs.walletconnect.com/2.0/>                                                         | Any compatible app             |
+| Wallet                  | Home Page                                   | Technical Docs                                                                                | Notes                                                                            |
+| ----------------------- | ------------------------------------------- | --------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| Defly                   | <https://defly.app>                         | <https://docs.defly.app/app/overview>                                                         | Mobile                                                                           |
+| Pera                    | <https://perawallet.app>                    | <https://docs.perawallet.app>                                                                 | Mobile & Web                                                                     |
+| Exodus                  | <https://www.exodus.com>                    | <https://docs.exodus.com>                                                                     | Chrome extension, MainNet only                                                   |
+| MyAlgo                  | <https://connect.myalgo.com>                | <https://connect.myalgo.com/docs/introduction>                                                | Web                                                                              |
+| Ledger                  | <https://www.ledger.com/ledger-live>        | <https://github.com/LedgerHQ/ledger-live/tree/develop/libs/ledgerjs/packages/hw-app-algorand> | Direct USB in Chrome                                                             |
+| WalletConnect           | <https://walletconnect.com>                 | <https://docs.walletconnect.com/2.0/>                                                         | Any compatible app                                                               |
+| MetaMask (experimental) | <https://metamask.io> <https://snapalgo.io> | <https://snapalgo.io/docs>                                                                    | Pre-release Algorand Snap running in MetaMask Flask <https://metamask.io/flask/> |
 
 ### WalletConnect-compatible Wallets
 
