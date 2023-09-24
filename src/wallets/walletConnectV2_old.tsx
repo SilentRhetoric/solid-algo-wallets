@@ -1,16 +1,20 @@
 /*
  * Documentation:
  * https://docs.walletconnect.com/2.0/
+ * https://docs.walletconnect.com/2.0/web/sign/dapp-usage (now dead link)
  * https://docs.walletconnect.com/2.0/advanced/migration-from-v1.x/dapps/dapp-checklist#common-errors-and-fixes
- * 9/4/23 It appears their libs changed again
- * Sign API: https://docs.walletconnect.com/2.0/api/sign/dapp-usage
- * Modal: https://docs.walletconnect.com/2.0/advanced/walletconnectmodal/usage
+ * 9/4/23 It appears their libs changed again https://docs.walletconnect.com/2.0/api/sign/dapp-usage
  */
 import { createRoot, createSignal } from 'solid-js'
 import { WalletAccount, WalletInterface } from '../types'
 import { Transaction } from 'algosdk'
+import {
+  WalletConnectModalSign,
+  WalletConnectModalSignOptions,
+  WalletConnectModalSignSession,
+} from '@walletconnect/modal-sign-html'
+import type { WalletConnectModalConfig } from '@walletconnect/modal'
 import useNetwork from '../useNetwork'
-import { SignClient } from '@walletconnect/sign-client/dist/types/client'
 
 export type WalletConnectTransaction = {
   txn: string
@@ -47,12 +51,12 @@ const formatJsonRpcRequest = <T = any,>(method: string, params: T): JsonRpcReque
   }
 }
 
-function useWalletConnectNew(): WalletInterface {
-  const [walletClient, setWalletClient] = createSignal<SignClient>()
+function useWalletConnectOld(): WalletInterface {
+  const [walletClient, setWalletClient] = createSignal<WalletConnectModalSign>()
   const [accounts, setAccounts] = createSignal<WalletAccount[]>([])
   const { activeNetwork } = useNetwork
 
-  const name = 'WalletConnectNew'
+  const name = 'WalletConnect'
   const projectId = import.meta.env.VITE_WALLETCONNECT_PROJECT_ID
   const metadata = {
     name: import.meta.env.VITE_WALLETCONNECT_PROJECT_NAME,
@@ -61,13 +65,13 @@ function useWalletConnectNew(): WalletInterface {
     icons: [import.meta.env.VITE_WALLETCONNECT_PROJECT_ICON],
   }
   const relayUrl = 'wss://relay.walletconnect.com'
-  const modalOptions = {
+  const modalOptions: Omit<WalletConnectModalConfig, 'projectId' | 'walletConnectVersion'> = {
     themeMode: 'light',
     explorerRecommendedWalletIds: 'NONE',
     explorerExcludedWalletIds: 'ALL',
     enableExplorer: false,
   }
-  const clientOptions = {
+  const clientOptions: WalletConnectModalSignOptions = {
     projectId,
     metadata,
     relayUrl,
@@ -97,7 +101,6 @@ function useWalletConnectNew(): WalletInterface {
       <svg
         fill="black"
         viewBox="0 0 480 332"
-        width="100%"
         height="32"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -109,10 +112,8 @@ function useWalletConnectNew(): WalletInterface {
   function image() {
     return (
       <svg
-        width="100%"
         height="32"
         viewBox="0 0 203 32"
-        fill="blue"
         xmlns="http://www.w3.org/2000/svg"
       >
         <g clip-path="url(#a)">
@@ -127,46 +128,31 @@ function useWalletConnectNew(): WalletInterface {
     )
   }
 
-  async function getClient(onDisconnect: () => void) {
+  async function getClient(onDisconnect: () => void): Promise<WalletConnectModalSign> {
     const client = walletClient()
     if (client) {
       return client
     } else {
-      const SignClient = (await import('@walletconnect/sign-client')).SignClient
-      const client = await SignClient.init(clientOptions)
-      console.debug('WalletConnectNew client', client)
-      client.on('session_event', e => console.debug('Session event:', e))
-      client.on('session_update', ({ topic, params }) =>
-        console.debug('Session update:', topic, params),
-      )
-      client.on('session_delete', e => {
+      const WalletConnectModalSign = (await import('@walletconnect/modal-sign-html'))
+        .WalletConnectModalSign
+      const client = new WalletConnectModalSign(clientOptions)
+      client.onSessionEvent(e => console.debug('Session event:', e))
+      client.onSessionUpdate(e => console.debug('Session update:', e))
+      client.onSessionDelete(e => {
         console.debug('Session delete:', e)
         onDisconnect()
       })
-      client.on('session_expire', e => console.debug('Session expire:', e))
+      client.onSessionExpire(e => console.debug('Session expire:', e))
       return client
     }
   }
 
   async function connect(onDisconnect: () => void): Promise<WalletAccount[]> {
-    console.debug('WalletConnectNew: connect')
+    console.debug('WalletConnect: connect')
     const client = await getClient(onDisconnect)
-    console.debug('WalletConnectNew Client before connecting: ', client)
-    const WalletConnectModal = (await import('@walletconnect/modal')).WalletConnectModal
-    const walletConnectModal = new WalletConnectModal({ projectId, chains })
-    const { uri, approval } = await client.connect({
+    const session: WalletConnectModalSignSession = await client.connect({
       requiredNamespaces,
     })
-    if (!uri) {
-      throw new Error('Error connecting to WalletConnectNew: no URI returned.')
-    }
-    console.debug('URI: ', uri)
-    console.debug('approval: ', approval)
-    walletConnectModal.openModal({ uri })
-    // Await session approval from the wallet.
-    const session = await approval()
-    // Handle the returned session (e.g. update UI to "connected" state).
-    // * You will need to create this function to handle the session *
     console.debug('Session: ', session)
     const { accounts } = session.namespaces.algorand!
     console.debug('Accounts: ', accounts)
@@ -175,41 +161,37 @@ function useWalletConnectNew(): WalletInterface {
     }
     // WC returns each account once per network; reduce to unique accts only
     const walletAccounts = accounts.reduce<WalletAccount[]>(
-      (list: WalletAccount[], account: string, idx: number) => {
+      (acc: WalletAccount[], account: string, idx: number) => {
         const walletAccount = {
           address: account.split(':').pop() as string,
-          name: `WalletConnectNew ${idx}`,
+          name: `WalletConnect ${idx}`,
         }
-        if (list.find((wa: WalletAccount) => wa.address === walletAccount.address) === undefined) {
-          list.push(walletAccount)
+        if (acc.find((wa: WalletAccount) => wa.address === walletAccount.address) === undefined) {
+          acc.push(walletAccount)
         }
-        return list
+        return acc
       },
       [],
     )
-    console.debug('WalletConnectNew Client after connecting: ', client)
     setWalletClient(client)
     setAccounts(walletAccounts)
     console.debug('Wallet accounts: ', walletAccounts)
-    // Close the QRCode modal in case it was open.
-    walletConnectModal.closeModal()
     return walletAccounts
   }
 
   async function reconnect(onDisconnect: () => void) {
-    console.debug('WalletConnectNew: reconnect')
+    console.debug('WalletConnectV2: reconnect')
     const client = await getClient(onDisconnect)
-    const lastKeyIndex = client.session.getAll().length - 1
-    const session = client.session.getAll()[lastKeyIndex]
+    const session = await client.getSession()
     console.debug('Session: ', session)
     if (session) {
-      const { accounts } = session.namespaces.algorand!
+      const { accounts } = session.namespaces.algorand
       if (accounts.length === 0) {
         throw new Error(`No accounts found`)
       }
       const walletAccounts: WalletAccount[] = accounts.map((account: string, index: number) => ({
         address: account.split(':').pop() as string,
-        name: `WalletConnectNew ${index}`,
+        name: `WalletConnect ${index}`,
       }))
       setWalletClient(client)
       setAccounts(walletAccounts)
@@ -222,11 +204,10 @@ function useWalletConnectNew(): WalletInterface {
   }
 
   async function disconnect(onDisconnect: () => void) {
-    console.debug('Disconnecting WalletConnectNew')
+    console.debug('Disconnecting WalletConnectV2')
     const client = walletClient()
     if (client) {
-      const lastKeyIndex = client.session.getAll().length - 1
-      const session = client.session.getAll()[lastKeyIndex]
+      const session = await client.getSession()
       console.debug('Session to disconnect: ', session)
       if (session) {
         try {
@@ -237,13 +218,13 @@ function useWalletConnectNew(): WalletInterface {
               code: 6000,
             },
           })
-          console.debug('Disconnected WalletConnectNew session')
+          console.debug('Disconnected WalletConnect session')
         } catch (e) {
           console.error('Error disconnecting session:', e)
         }
       }
     }
-    console.debug('WalletConnectNew disconnected')
+    console.debug('WalletConnect disconnected')
     setWalletClient(undefined)
     setAccounts([])
     onDisconnect()
@@ -253,11 +234,10 @@ function useWalletConnectNew(): WalletInterface {
     txnGroup: Transaction[],
     indexesToSign: number[],
   ): Promise<Uint8Array[]> {
-    console.debug('WalletConnectNew transactionSigner')
+    console.debug('WalletConnectV2 transactionSigner')
     const client = walletClient()
     if (client) {
-      const lastKeyIndex = client.session.getAll().length - 1
-      const session = client.session.getAll()[lastKeyIndex]
+      const session = await client.getSession()
       console.debug('Session: ', session)
       if (session) {
         const txnsToSign = txnGroup.reduce<WalletConnectTransaction[]>((acc, txn, idx) => {
@@ -315,4 +295,4 @@ function useWalletConnectNew(): WalletInterface {
   }
 }
 
-export default createRoot(useWalletConnectNew)
+export default createRoot(useWalletConnectOld)

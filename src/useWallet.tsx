@@ -6,9 +6,10 @@ import useExodus from './wallets/exodus'
 import useLedger from './wallets/ledger'
 import usePera from './wallets/pera'
 import useDefly from './wallets/defly'
+// import useWalletConnectOld from './wallets/walletConnectV2_old'
 import useWalletConnect from './wallets/walletConnectV2'
-import useWalletConnectNew from './wallets/walletConnectV2_new'
 // import useDaffi from './wallets/daffi'
+import useMetaMask from './wallets/metamask'
 import useLocalnet from './wallets/localnet'
 import { audio } from './audio'
 import { Transaction } from 'algosdk'
@@ -32,8 +33,9 @@ function useWallet() {
     useExodus,
     useMyAlgo,
     useWalletConnect,
-    useWalletConnectNew,
+    // useWalletConnectOld,
     // useDaffi,
+    useMetaMask,
     useLocalnet,
   ]
   const [activeWallet, setActiveWallet] = createSignal<WalletInterface>()

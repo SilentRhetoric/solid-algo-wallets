@@ -4,7 +4,26 @@ import githubLogo from './assets/github-mark.svg'
 import { TransactionSignerAccount } from '@algorandfoundation/algokit-utils/types/account'
 import * as algokit from '@algorandfoundation/algokit-utils'
 import { AtomicTransactionComposer, makePaymentTxnWithSuggestedParamsFromObject } from 'algosdk'
-import { useWallet, useNetwork, NetworkName } from 'solid-algo-wallets'
+// Changed the exports to CamelCase to address Vite dev HMR issue
+import { UseWallet, UseNetwork, NetworkName } from '../../src/index'
+
+// import {
+//   assetOptIn,
+//   assetOptOut,
+//   connect,
+//   displayBalance,
+//   displayMnemonic,
+//   getAccounts,
+//   getAddress,
+//   getAssets,
+//   getBalance,
+//   getCurrentAccount,
+//   getTransactions,
+//   setCurrentAccount,
+//   signTxns,
+//   transfer,
+//   transferAsset,
+// } from './mm'
 
 export function ellipseString(string = '', width = 4): string {
   return `${string.slice(0, width)}...${string.slice(-width)}`
@@ -20,8 +39,8 @@ const App: Component = () => {
     disconnectWallet,
     walletInterfaces,
     transactionSigner,
-  } = useWallet
-  const { algodClient, activeNetwork, setActiveNetwork, networkNames, getTxUrl } = useNetwork
+  } = UseWallet
+  const { algodClient, activeNetwork, setActiveNetwork, networkNames, getTxUrl } = UseNetwork
   const [confirmedTxn, setConfirmedTxn] = createSignal('')
 
   onMount(() => reconnectWallet())
@@ -38,7 +57,7 @@ const App: Component = () => {
     const payTxn = makePaymentTxnWithSuggestedParamsFromObject({
       from: address(),
       to: address(),
-      amount: 0,
+      amount: 1,
       suggestedParams,
     })
     const txn = await algokit.getTransactionWithSigner(payTxn, transactionSignerAccount())
@@ -54,6 +73,96 @@ const App: Component = () => {
 
   return (
     <div class="flex flex-col items-center justify-center p-4 text-center">
+      {/* <button
+        class="btn btn-accent m-1 w-60"
+        onClick={() => connect()}
+      >
+        MetaMask Connect
+      </button>
+      <button
+        class="btn btn-accent m-1 w-60"
+        onClick={() => displayBalance()}
+      >
+        MetaMask Display Balance
+      </button>
+      <button
+        class="btn btn-accent m-1 w-60"
+        onClick={() => getBalance()}
+      >
+        MetaMask Get Balance
+      </button>
+      <button
+        class="btn btn-accent m-1 w-60"
+        onClick={() => getAddress()}
+      >
+        MetaMask Get Address
+      </button>
+      <button
+        class="btn btn-accent m-1 w-60"
+        onClick={() => transfer()}
+      >
+        MetaMask Transfer
+      </button>
+      <button
+        class="btn btn-accent m-1 w-60"
+        onClick={() => displayMnemonic()}
+      >
+        MetaMask Display Mnemonic
+      </button>
+      <button
+        class="btn btn-accent m-1 w-60"
+        onClick={() => getTransactions()}
+      >
+        MetaMask Get Transactions
+      </button>
+      <button
+        class="btn btn-accent m-1 w-60"
+        onClick={() => getAssets()}
+      >
+        MetaMask Get Assets
+      </button>
+      <button
+        class="btn btn-accent m-1 w-60"
+        onClick={() => getAccounts()}
+      >
+        MetaMask Get Accounts
+      </button>
+      <button
+        class="btn btn-accent m-1 w-60"
+        onClick={() => getCurrentAccount()}
+      >
+        MetaMask Get Current Account
+      </button>
+      <button
+        class="btn btn-accent m-1 w-60"
+        onClick={() => setCurrentAccount()}
+      >
+        MetaMask Set Current Account
+      </button>
+      <button
+        class="btn btn-accent m-1 w-60"
+        onClick={() => assetOptIn()}
+      >
+        MetaMask Opt In
+      </button>
+      <button
+        class="btn btn-accent m-1 w-60"
+        onClick={() => assetOptOut()}
+      >
+        MetaMask Opt Out
+      </button>
+      <button
+        class="btn btn-accent m-1 w-60"
+        onClick={() => transferAsset()}
+      >
+        MetaMask Transfer Asset
+      </button>
+      <button
+        class="btn btn-accent m-1 w-60"
+        onClick={() => signTxns()}
+      >
+        MetaMask Sign Txn
+      </button> */}
       <img
         src={solidLogo}
         class="logo"
@@ -74,7 +183,7 @@ const App: Component = () => {
         </a>
       </div>
       <select
-        class="select select-accent m-1 w-60 max-w-xs"
+        class="select select-accent m-1 max-w-xs"
         onChange={e => setActiveNetwork(e.target.value as NetworkName)}
         value={activeNetwork()}
       >
@@ -96,9 +205,9 @@ const App: Component = () => {
               class="btn btn-accent m-1 w-60"
               onClick={() => sendTestTxn()}
               disabled={activeWallet() === undefined}
-              aria-label="Send 0A transaction"
+              aria-label="Send transaction"
             >
-              Send 0A Transaction
+              Send Transaction
             </button>
 
             <button
@@ -125,16 +234,26 @@ const App: Component = () => {
           </>
         }
       >
-        <For each={Object.values(walletInterfaces)}>
-          {wallet => (
-            <button
-              class="btn btn-accent m-1 w-60"
-              onClick={() => connectWallet(wallet)}
-            >
-              {wallet.image()}
-            </button>
-          )}
-        </For>
+        <div class="flex flex-col gap-1">
+          <For each={Object.values(walletInterfaces)}>
+            {wallet => (
+              <div class="flex gap-1">
+                <button
+                  class="btn btn-accent w-20"
+                  onClick={() => connectWallet(wallet)}
+                >
+                  {wallet.icon()}
+                </button>
+                <button
+                  class="btn btn-accent w-60"
+                  onClick={() => connectWallet(wallet)}
+                >
+                  {wallet.image()}
+                </button>
+              </div>
+            )}
+          </For>
+        </div>
       </Show>
     </div>
   )

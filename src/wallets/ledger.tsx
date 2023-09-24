@@ -24,7 +24,6 @@ function useLedger(): WalletInterface {
         viewBox="0 0 768.91 669.35"
         style="enable-background:new 0 0 768.91 669.35;"
         fill="black"
-        width="100%"
         height="32"
       >
         <path
@@ -40,7 +39,6 @@ function useLedger(): WalletInterface {
       <svg
         enable-background="new 0 0 2000.58 669.35"
         viewBox="0 0 2000.58 669.35"
-        width="100%"
         height="32"
         xmlns="http://www.w3.org/2000/svg"
       >

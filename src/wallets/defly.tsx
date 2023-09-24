@@ -18,7 +18,6 @@ function useDefly(): WalletInterface {
   function icon() {
     return (
       <svg
-        width="100%"
         height="32"
         viewBox="0 0 340 320"
         xmlns="http://www.w3.org/2000/svg"
@@ -32,7 +31,6 @@ function useDefly(): WalletInterface {
   function image() {
     return (
       <svg
-        width="100%"
         height="32"
         viewBox="0 0 980 340"
         xmlns="http://www.w3.org/2000/svg"
