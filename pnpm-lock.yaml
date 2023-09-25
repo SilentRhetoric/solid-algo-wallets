@@ -113,7 +113,7 @@ importers:
         version: 2.4.0
       solid-algo-wallets:
         specifier: ^0.0.8
-        version: link:..
+        version: 0.0.8(react@18.2.0)(solid-js@1.7.12)
       solid-js:
         specifier: ^1.7.12
         version: 1.7.12
@@ -3992,6 +3992,37 @@ packages:
     resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}
     engines: {node: '>=8'}
     dev: true
+
+  /solid-algo-wallets@0.0.8(react@18.2.0)(solid-js@1.7.12):
+    resolution: {integrity: sha512-GYu1HUWuWxEBUE/0XLWlBgdNzMUjI30bTFxfSfnMabbH1hnTgQ4BwfLy6p/VHNk/TafVvaLZlNumXlijVmi82A==}
+    engines: {node: '>=18', pnpm: '>=8.6.0'}
+    peerDependencies:
+      solid-js: ^1.7.11
+    dependencies:
+      '@algorandfoundation/algokit-utils': 2.3.2
+      '@blockshake/defly-connect': 1.1.6(algosdk@2.4.0)
+      '@daffiwallet/connect': 1.0.3(algosdk@2.4.0)
+      '@ledgerhq/hw-app-algorand': 6.27.19
+      '@ledgerhq/hw-transport-webusb': 6.27.19
+      '@perawallet/connect': 1.3.2(algosdk@2.4.0)
+      '@randlabs/myalgo-connect': 1.4.2
+      '@solid-primitives/storage': 2.1.1(solid-js@1.7.12)
+      '@walletconnect/modal': 2.6.2(react@18.2.0)
+      '@walletconnect/modal-sign-html': 2.6.2(react@18.2.0)
+      '@walletconnect/sign-client': 2.10.1
+      algosdk: 2.4.0
+      buffer: 6.0.3
+      solid-js: 1.7.12
+    transitivePeerDependencies:
+      - '@react-native-async-storage/async-storage'
+      - '@types/react'
+      - bufferutil
+      - encoding
+      - lokijs
+      - react
+      - solid-start
+      - utf-8-validate
+    dev: false
 
   /solid-js@1.7.12:
     resolution: {integrity: sha512-QoyoOUKu14iLoGxjxWFIU8+/1kLT4edQ7mZESFPonsEXZ//VJtPKD8Ud1aTKzotj+MNWmSs9YzK6TdY+fO9Eww==}
