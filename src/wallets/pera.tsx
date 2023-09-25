@@ -8,7 +8,7 @@ import type { Transaction } from 'algosdk'
 import { createRoot, createSignal } from 'solid-js'
 // import useNetwork from '../useNetwork'
 
-function usePera(): WalletInterface {
+function UsePera(): WalletInterface {
   const [walletClient, setWalletClient] = createSignal<PeraWalletConnect>()
   const [accounts, setAccounts] = createSignal<WalletAccount[]>([])
   // const { getChainId } = useNetwork
@@ -248,4 +248,4 @@ function usePera(): WalletInterface {
   }
 }
 
-export default createRoot(usePera)
+export default createRoot(UsePera)

@@ -7,7 +7,7 @@ import { WalletInterface, WalletAccount } from '../types'
 import Algorand from '@ledgerhq/hw-app-algorand'
 import { createRoot, createSignal } from 'solid-js'
 
-function useLedger(): WalletInterface {
+function UseLedger(): WalletInterface {
   const [walletClient, setWalletClient] = createSignal<Algorand>()
   const [accounts, setAccounts] = createSignal<WalletAccount[]>([])
 
@@ -157,4 +157,4 @@ function useLedger(): WalletInterface {
   }
 }
 
-export default createRoot(useLedger)
+export default createRoot(UseLedger)

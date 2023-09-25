@@ -8,7 +8,7 @@ import type { Transaction } from 'algosdk'
 import { createRoot, createSignal } from 'solid-js'
 // import useNetwork from '../useNetwork'
 
-function useDaffi(): WalletInterface {
+function UseDaffi(): WalletInterface {
   const [walletClient, setWalletClient] = createSignal<DaffiWalletConnect>()
   const [accounts, setAccounts] = createSignal<WalletAccount[]>([])
   // const { getChainId } = useNetwork
@@ -333,4 +333,4 @@ function useDaffi(): WalletInterface {
   }
 }
 
-export default createRoot(useDaffi)
+export default createRoot(UseDaffi)

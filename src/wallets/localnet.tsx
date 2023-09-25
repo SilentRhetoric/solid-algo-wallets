@@ -1,7 +1,7 @@
 import { createRoot, createSignal } from 'solid-js'
 import { WalletAccount, WalletInterface } from '../types'
 import algosdk, { Transaction, encodeAddress } from 'algosdk'
-import useNetwork from '../useNetwork'
+import UseNetwork from '../useNetwork'
 
 // Borrowed from https://github.com/algorand-devrel/beaker-ts/blob/master/src/sandbox/accounts.ts
 const kmd_token = 'a'.repeat(64)
@@ -71,11 +71,11 @@ export async function getSandboxAccounts(
   })
 }
 
-function useLocalnet(): WalletInterface {
+function UseLocalnet(): WalletInterface {
   const [walletClient, setWalletClient] = createSignal()
   const [accounts, setAccounts] = createSignal<WalletAccount[]>([])
   const [sandboxAccounts, setSandboxAccounts] = createSignal<SandboxAccount[]>([])
-  const { setActiveNetwork } = useNetwork
+  const { setActiveNetwork } = UseNetwork
 
   const name = 'LocalNet KMD'
 
@@ -211,4 +211,4 @@ function useLocalnet(): WalletInterface {
   }
 }
 
-export default createRoot(useLocalnet)
+export default createRoot(UseLocalnet)

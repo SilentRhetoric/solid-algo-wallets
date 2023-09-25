@@ -1,0 +1,4 @@
+packages:
+  - .
+  - site-dev
+  - site-build

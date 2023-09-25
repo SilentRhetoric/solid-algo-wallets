@@ -54,7 +54,7 @@ type Exodus = {
   signTxns(transactions: WalletTransaction[]): Promise<SignTxnsResult>
 }
 
-function useExodus(): WalletInterface {
+function UseExodus(): WalletInterface {
   const [walletClient, setWalletClient] = createSignal<Exodus>()
   const [accounts, setAccounts] = createSignal<WalletAccount[]>([])
 
@@ -427,4 +427,4 @@ function useExodus(): WalletInterface {
   }
 }
 
-export default createRoot(useExodus)
+export default createRoot(UseExodus)

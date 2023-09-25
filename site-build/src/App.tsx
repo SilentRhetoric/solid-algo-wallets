@@ -4,8 +4,8 @@ import githubLogo from './assets/github-mark.svg'
 import { TransactionSignerAccount } from '@algorandfoundation/algokit-utils/types/account'
 import * as algokit from '@algorandfoundation/algokit-utils'
 import { AtomicTransactionComposer, makePaymentTxnWithSuggestedParamsFromObject } from 'algosdk'
-// Changed the exports to CamelCase to address Vite dev HMR issue
-import { UseWallet, UseNetwork, NetworkName } from '../../src/index'
+// Changed the exports to PascalCase to address Vite dev HMR issue
+import { UseSolidAlgoWallets, UseNetwork, NetworkName } from 'solid-algo-wallets'
 
 // import {
 //   assetOptIn,
@@ -39,7 +39,7 @@ const App: Component = () => {
     disconnectWallet,
     walletInterfaces,
     transactionSigner,
-  } = UseWallet
+  } = UseSolidAlgoWallets
   const { algodClient, activeNetwork, setActiveNetwork, networkNames, getTxUrl } = UseNetwork
   const [confirmedTxn, setConfirmedTxn] = createSignal('')
 

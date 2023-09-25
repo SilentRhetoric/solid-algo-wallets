@@ -8,7 +8,7 @@ import type { Transaction } from 'algosdk'
 import { createRoot, createSignal } from 'solid-js'
 // import useNetwork from '../useNetwork'
 
-function useDefly(): WalletInterface {
+function UseDefly(): WalletInterface {
   const [walletClient, setWalletClient] = createSignal<DeflyWalletConnect>()
   const [accounts, setAccounts] = createSignal<WalletAccount[]>([])
   // const { getChainId } = useNetwork
@@ -178,4 +178,4 @@ function useDefly(): WalletInterface {
   }
 }
 
-export default createRoot(useDefly)
+export default createRoot(UseDefly)

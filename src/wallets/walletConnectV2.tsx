@@ -9,7 +9,7 @@
 import { createRoot, createSignal } from 'solid-js'
 import { WalletAccount, WalletInterface } from '../types'
 import { Transaction } from 'algosdk'
-import useNetwork from '../useNetwork'
+import UseNetwork from '../useNetwork'
 import { SignClient } from '@walletconnect/sign-client/dist/types/client'
 
 export type WalletConnectTransaction = {
@@ -47,12 +47,12 @@ const formatJsonRpcRequest = <T = any,>(method: string, params: T): JsonRpcReque
   }
 }
 
-function useWalletConnect(): WalletInterface {
+function UseWalletConnect(): WalletInterface {
   const [walletClient, setWalletClient] = createSignal<SignClient>()
   const [accounts, setAccounts] = createSignal<WalletAccount[]>([])
-  const { activeNetwork } = useNetwork
+  const { activeNetwork } = UseNetwork
 
-  const name = 'WalletConnectNew'
+  const name = 'WalletConnect'
   const projectId = import.meta.env.VITE_WALLETCONNECT_PROJECT_ID
   const metadata = {
     name: import.meta.env.VITE_WALLETCONNECT_PROJECT_NAME,
@@ -132,7 +132,7 @@ function useWalletConnect(): WalletInterface {
     } else {
       const SignClient = (await import('@walletconnect/sign-client')).SignClient
       const client = await SignClient.init(clientOptions)
-      console.debug('WalletConnectNew client', client)
+      console.debug('WalletConnect client', client)
       client.on('session_event', e => console.debug('Session event:', e))
       client.on('session_update', ({ topic, params }) =>
         console.debug('Session update:', topic, params),
@@ -147,16 +147,16 @@ function useWalletConnect(): WalletInterface {
   }
 
   async function connect(onDisconnect: () => void): Promise<WalletAccount[]> {
-    console.debug('WalletConnectNew: connect')
+    console.debug('WalletConnect: connect')
     const client = await getClient(onDisconnect)
-    console.debug('WalletConnectNew Client before connecting: ', client)
+    console.debug('WalletConnect Client before connecting: ', client)
     const WalletConnectModal = (await import('@walletconnect/modal')).WalletConnectModal
     const walletConnectModal = new WalletConnectModal({ projectId, chains })
     const { uri, approval } = await client.connect({
       requiredNamespaces,
     })
     if (!uri) {
-      throw new Error('Error connecting to WalletConnectNew: no URI returned.')
+      throw new Error('Error connecting to WalletConnect: no URI returned.')
     }
     console.debug('URI: ', uri)
     console.debug('approval: ', approval)
@@ -176,7 +176,7 @@ function useWalletConnect(): WalletInterface {
       (list: WalletAccount[], account: string, idx: number) => {
         const walletAccount = {
           address: account.split(':').pop() as string,
-          name: `WalletConnectNew ${idx}`,
+          name: `WalletConnect ${idx}`,
         }
         if (list.find((wa: WalletAccount) => wa.address === walletAccount.address) === undefined) {
           list.push(walletAccount)
@@ -185,7 +185,7 @@ function useWalletConnect(): WalletInterface {
       },
       [],
     )
-    console.debug('WalletConnectNew Client after connecting: ', client)
+    console.debug('WalletConnect Client after connecting: ', client)
     setWalletClient(client)
     setAccounts(walletAccounts)
     console.debug('Wallet accounts: ', walletAccounts)
@@ -195,7 +195,7 @@ function useWalletConnect(): WalletInterface {
   }
 
   async function reconnect(onDisconnect: () => void) {
-    console.debug('WalletConnectNew: reconnect')
+    console.debug('WalletConnect: reconnect')
     const client = await getClient(onDisconnect)
     const lastKeyIndex = client.session.getAll().length - 1
     const session = client.session.getAll()[lastKeyIndex]
@@ -207,7 +207,7 @@ function useWalletConnect(): WalletInterface {
       }
       const walletAccounts: WalletAccount[] = accounts.map((account: string, index: number) => ({
         address: account.split(':').pop() as string,
-        name: `WalletConnectNew ${index}`,
+        name: `WalletConnect ${index}`,
       }))
       setWalletClient(client)
       setAccounts(walletAccounts)
@@ -220,7 +220,7 @@ function useWalletConnect(): WalletInterface {
   }
 
   async function disconnect(onDisconnect: () => void) {
-    console.debug('Disconnecting WalletConnectNew')
+    console.debug('Disconnecting WalletConnect')
     const client = walletClient()
     if (client) {
       const lastKeyIndex = client.session.getAll().length - 1
@@ -235,13 +235,13 @@ function useWalletConnect(): WalletInterface {
               code: 6000,
             },
           })
-          console.debug('Disconnected WalletConnectNew session')
+          console.debug('Disconnected WalletConnect session')
         } catch (e) {
           console.error('Error disconnecting session:', e)
         }
       }
     }
-    console.debug('WalletConnectNew disconnected')
+    console.debug('WalletConnect disconnected')
     setWalletClient(undefined)
     setAccounts([])
     onDisconnect()
@@ -251,7 +251,7 @@ function useWalletConnect(): WalletInterface {
     txnGroup: Transaction[],
     indexesToSign: number[],
   ): Promise<Uint8Array[]> {
-    console.debug('WalletConnectNew transactionSigner')
+    console.debug('WalletConnect transactionSigner')
     const client = walletClient()
     if (client) {
       const lastKeyIndex = client.session.getAll().length - 1
@@ -313,4 +313,4 @@ function useWalletConnect(): WalletInterface {
   }
 }
 
-export default createRoot(useWalletConnect)
+export default createRoot(UseWalletConnect)

@@ -1,0 +1,31 @@
+{
+  "name": "solid-algo-wallets-site-build",
+  "version": "0.0.1",
+  "description": "Example SolidJS web application with Algorand wallets integration via the solid-algo-wallets library",
+  "scripts": {
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "clean": "rm -rf node_modules && rm -rf dist && rm pnpm-lock.yaml"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.6.2",
+    "autoprefixer": "^10.4.16",
+    "daisyui": "^3.7.7",
+    "postcss": "^8.4.30",
+    "prettier": "3.0.3",
+    "prettier-plugin-tailwindcss": "^0.5.4",
+    "tailwindcss": "^3.3.3",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.9",
+    "vite-plugin-solid": "^2.7.0"
+  },
+  "dependencies": {
+    "@algorandfoundation/algokit-utils": "^2.3.2",
+    "algosdk": "2.4.0",
+    "solid-js": "^1.7.12",
+    "solid-algo-wallets": "^0.0.8"
+  }
+}

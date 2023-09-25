@@ -83,13 +83,13 @@ The library is configured using environment variables from a .env file in the pr
 - Block explorer base URL to construct explorer links for each network. Supports AlgoExplorer and Dappflow linking.
 - Project ID, Project Name, Project Description, Project URL, and Project ICON for the Dapp's project on WalletConnect
 
-### useWallet
+### UseSolidAlgoWallets
 
-The `useWallet` function returns a reactive root that provides the active wallet/metadata/address, methods to connect/reconnect/disconnect wallets, and a `transactionSigher` function that enables signing transactions with the connected wallet.
+The `UseSolidAlgoWallets` function returns a reactive root that provides the active wallet/metadata/address, methods to connect/reconnect/disconnect wallets, and a `transactionSigher` function that enables signing transactions with the connected wallet.
 
-### useNetwork
+### UseNetwork
 
-The `useNetwork` function returns a reactive root that provides an alogd client for the selected network, as well as helpful functions to create URLs for block explorer linking.
+The `UseNetwork` function returns a reactive root that provides an alogd client for the selected network, as well as helpful functions to create URLs for block explorer linking.
 
 ## Design Decisions
 
@@ -113,7 +113,7 @@ The library is designed to manage state globally using SolidJS reactive roots on
 
 This design was chosen both for simplicity and also because truly decentralized web apps should allow users to use the client without dependency on a back-end server. These wallet interfaces should be managed on the client so that an end user can download and install a web app locally and continue using it even if the host server becomes unavailable.
 
-> Note that this approach is not suitable for apps which utilize server-side rendering (SSR) and _will_ cause problems. It may be possible to provide the reactive roots to a context provider, but this is untested.
+> Note that this approach is not suitable for Solid Start apps which utilize server-side rendering (SSR) and _will_ cause problems. It may be possible to provide the reactive roots to a context provider, but this is untested as yet.
 
 ### Additional Resources
 

@@ -1,5 +1,5 @@
 {
-  "name": "solid-algo-wallets-example",
+  "name": "solid-algo-wallets-site-dev",
   "version": "0.0.1",
   "description": "Example SolidJS web application with Algorand wallets integration via the solid-algo-wallets library",
   "scripts": {
@@ -11,6 +11,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@types/node": "^20.6.2",
     "autoprefixer": "^10.4.16",
     "daisyui": "^3.7.7",
     "postcss": "^8.4.30",

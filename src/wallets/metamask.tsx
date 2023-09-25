@@ -93,7 +93,7 @@ interface WalletTransaction {
   groupMessage?: string
 }
 
-function useMetaMask(): WalletInterface {
+function UseMetaMask(): WalletInterface {
   const [walletClient, setWalletClient] = createSignal<MetaMask>()
   const [accounts, setAccounts] = createSignal<WalletAccount[]>([])
 
@@ -603,4 +603,4 @@ function useMetaMask(): WalletInterface {
   }
 }
 
-export default createRoot(useMetaMask)
+export default createRoot(UseMetaMask)

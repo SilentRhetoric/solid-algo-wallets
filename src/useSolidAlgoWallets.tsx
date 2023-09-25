@@ -1,16 +1,16 @@
 import { makePersisted } from '@solid-primitives/storage'
 import { WalletAccount, WalletInterface } from './types'
 import { createRoot, createSignal } from 'solid-js'
-import useMyAlgo from './wallets/myalgo'
-import useExodus from './wallets/exodus'
-import useLedger from './wallets/ledger'
-import usePera from './wallets/pera'
-import useDefly from './wallets/defly'
+import UseMyAlgo from './wallets/myalgo'
+import UseExodus from './wallets/exodus'
+import UseLedger from './wallets/ledger'
+import UsePera from './wallets/pera'
+import UseDefly from './wallets/defly'
+import UseWalletConnect from './wallets/walletConnectV2'
 // import useWalletConnectOld from './wallets/walletConnectV2_old'
-import useWalletConnect from './wallets/walletConnectV2'
 // import useDaffi from './wallets/daffi'
-import useMetaMask from './wallets/metamask'
-import useLocalnet from './wallets/localnet'
+import UseMetaMask from './wallets/metamask'
+import UseLocalnet from './wallets/localnet'
 import { audio } from './audio'
 import { Transaction } from 'algosdk'
 
@@ -25,18 +25,18 @@ const getIsIOS = () => {
 const isIOS = getIsIOS()
 const keepWCAlive: HTMLAudioElement = new Audio()
 
-function useWallet() {
+function UseSolidAlgoWallets() {
   const walletInterfaces: WalletInterface[] = [
-    useDefly,
-    usePera,
-    useLedger,
-    useExodus,
-    useMyAlgo,
-    useWalletConnect,
+    UseDefly,
+    UsePera,
+    UseLedger,
+    UseExodus,
+    UseMyAlgo,
+    UseWalletConnect,
     // useWalletConnectOld,
     // useDaffi,
-    useMetaMask,
-    useLocalnet,
+    UseMetaMask,
+    UseLocalnet,
   ]
   const [activeWallet, setActiveWallet] = createSignal<WalletInterface>()
   const [walletName, setWalletName] = makePersisted(createSignal(''), { name: 'walletName' })
@@ -153,4 +153,4 @@ function useWallet() {
   }
 }
 
-export default createRoot(useWallet)
+export default createRoot(UseSolidAlgoWallets)

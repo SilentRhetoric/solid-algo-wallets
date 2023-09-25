@@ -8,9 +8,8 @@ import {
   NetworkConfigs,
   NetworkName,
 } from './types'
-import { makeAlgoAssetDataObj, makeAssetDataObj } from './utilities'
 
-function useNetwork() {
+function UseNetwork() {
   const MAINNET_ALGOD_TOKEN = import.meta.env.VITE_MAINNET_ALGOD_TOKEN
   const MAINNET_ALGOD_SERVER = import.meta.env.VITE_MAINNET_ALGOD_SERVER
   const MAINNET_ALGOD_PORT = import.meta.env.VITE_MAINNET_ALGOD_PORT
@@ -115,14 +114,14 @@ function useNetwork() {
     }
   }
 
-  async function getAccountInfo(address: string) {
-    const accountInfo = await algodClient().accountInformation(address).do()
-    return accountInfo as AccountInfo
-  }
-
   async function confirmTransaction(txId: string, timeout = 4) {
     const confirmation = (await waitForConfirmation(algodClient(), txId, timeout)) as ConfirmedTxn
     return { txId, ...confirmation }
+  }
+
+  async function getAccountInfo(address: string): Promise<AccountInfo> {
+    const accountInfo = await algodClient().accountInformation(address).do()
+    return accountInfo as AccountInfo
   }
 
   async function getAssetData(assetData: AssetData): Promise<AssetData> {
@@ -144,15 +143,6 @@ function useNetwork() {
     }
   }
 
-  async function getAssetDataFromBigInts(assetIndex: BigInt, amount: BigInt): Promise<AssetData> {
-    if (Number(assetIndex) == 0) {
-      const newAlgoAsset = makeAlgoAssetDataObj(Number(amount))
-      return newAlgoAsset
-    } else {
-      return await getAssetData(makeAssetDataObj(Number(assetIndex), Number(amount)))
-    }
-  }
-
   return {
     algodClient,
     activeNetwork,
@@ -162,11 +152,10 @@ function useNetwork() {
     getTxUrl,
     getAccountInfo,
     getAssetData,
-    getAssetDataFromBigInts,
     confirmTransaction,
     networkConfigs,
     networkNames,
   }
 }
 
-export default createRoot(useNetwork)
+export default createRoot(UseNetwork)

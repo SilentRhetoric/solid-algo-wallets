@@ -7,7 +7,7 @@ import MyAlgoConnect, { Accounts } from '@randlabs/myalgo-connect'
 import { WalletAccount, WalletInterface } from '../types'
 import { Transaction } from 'algosdk'
 
-function useMyAlgo(): WalletInterface {
+function UseMyAlgo(): WalletInterface {
   const [walletClient, setWalletClient] = createSignal<MyAlgoConnect>()
   const [accounts, setAccounts] = createSignal<WalletAccount[]>([])
 
@@ -139,4 +139,4 @@ function useMyAlgo(): WalletInterface {
   }
 }
 
-export default createRoot(useMyAlgo)
+export default createRoot(UseMyAlgo)
