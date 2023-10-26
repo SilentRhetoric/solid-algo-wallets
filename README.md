@@ -67,6 +67,15 @@ The following wallets are known to be compatible with the generic WalletConnect 
 | ------------- | ---------------------------- | ---------------------------------------------- | ---|
 | AWallet | <https://www.a-wallet.net/> | <https://github.com/scholtz/wallet/> | Manual connection to web wallet via copy/paste |
 
+### Potential Additional Wallets
+
+The following wallets have been identified as supporting Algorand but have not been evaluated for integration. Pull requests encouraged!
+| Wallet | Home Page | Technical Docs | Notes |
+| ------------- | ---------------------------- | ---------------------------------------------- | ---|
+| D'CENT | <https://dcentwallet.com> | <https://dev-docs.dcentwallet.com/dwc/Introduction> | Hardware and app wallets |
+| OneKey | <https://onekey.so> | <https://developer.onekey.so/connect-to-hardware/hardware-sdk/api-reference/algorand/algosigntransaction> | |
+| Guarda | <https://guarda.com> | | |
+
 ### Known Unsupported Wallets
 
 - [Daffi Wallet](https://www.daffione.com) is not able to establish a WalletConnect session as of Sep 9th, 2023 and so is not included. A Pull Request would be accepted when the wallet can be successfully connected.

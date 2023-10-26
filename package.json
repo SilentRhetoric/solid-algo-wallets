@@ -91,7 +91,6 @@
     "solid-js": "^1.7.11"
   },
   "dependencies": {
-    "@algorandfoundation/algokit-utils": "^2.3.2",
     "@blockshake/defly-connect": "^1.1.6",
     "@daffiwallet/connect": "^1.0.3",
     "@ledgerhq/hw-app-algorand": "^6.27.19",
