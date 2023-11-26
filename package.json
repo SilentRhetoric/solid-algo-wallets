@@ -1,6 +1,6 @@
 {
   "name": "solid-algo-wallets",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "Integrate multiple Algorand wallets with a SolidJS web application client",
   "license": "MIT",
   "author": "Brian Whippo <dev@silentrhetoric.com>",
@@ -59,7 +59,7 @@
   "sideEffects": false,
   "scripts": {
     "build": "tsup",
-    "clean": "rm -rf node_modules && rm -rf dist && rm pnpm-lock.yaml",
+    "clean": "rm -rf node_modules && rm -rf dist",
     "prepublishOnly": "pnpm build",
     "format": "prettier -w \"src/**/*.{js,ts,json,css,tsx,jsx}\" --ignore-path .gitignore",
     "lint": "concurrently pnpm:lint:*",
@@ -101,8 +101,13 @@
     "@walletconnect/modal": "^2.6.2",
     "@walletconnect/modal-sign-html": "^2.6.2",
     "@walletconnect/sign-client": "^2.10.1",
-    "algosdk": "2.4.0",
+    "algosdk": "2.7.0",
     "buffer": "^6.0.3"
   },
-  "browser": {}
+  "browser": {},
+  "workspaces": [
+    ".",
+    "site-build",
+    "site-dev"
+  ]
 }

@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
-    "clean": "rm -rf node_modules && rm -rf dist && rm pnpm-lock.yaml"
+    "clean": "rm -rf node_modules && rm -rf dist"
   },
   "license": "MIT",
   "devDependencies": {
@@ -23,9 +23,9 @@
     "vite-plugin-solid": "^2.7.0"
   },
   "dependencies": {
-    "@algorandfoundation/algokit-utils": "^2.3.2",
-    "algosdk": "2.4.0",
-    "solid-js": "^1.7.12",
-    "solid-algo-wallets": "^0.0.8"
+    "@algorandfoundation/algokit-utils": "^5.0.1",
+    "algosdk": "2.7.0",
+    "solid-algo-wallets": "workspace:*",
+    "solid-js": "^1.7.12"
   }
 }

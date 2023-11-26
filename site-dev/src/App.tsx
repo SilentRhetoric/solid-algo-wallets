@@ -7,24 +7,6 @@ import { AtomicTransactionComposer, makePaymentTxnWithSuggestedParamsFromObject 
 // Changed the exports to PascalCase to address Vite dev HMR issue
 import { UseSolidAlgoWallets, UseNetwork, NetworkName } from '../../src/index'
 
-// import {
-//   assetOptIn,
-//   assetOptOut,
-//   connect,
-//   displayBalance,
-//   displayMnemonic,
-//   getAccounts,
-//   getAddress,
-//   getAssets,
-//   getBalance,
-//   getCurrentAccount,
-//   getTransactions,
-//   setCurrentAccount,
-//   signTxns,
-//   transfer,
-//   transferAsset,
-// } from './mm'
-
 export function ellipseString(string = '', width = 4): string {
   return `${string.slice(0, width)}...${string.slice(-width)}`
 }
