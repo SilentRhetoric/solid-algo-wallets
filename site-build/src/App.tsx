@@ -57,7 +57,7 @@ const App: Component = () => {
     const payTxn = makePaymentTxnWithSuggestedParamsFromObject({
       from: address(),
       to: address(),
-      amount: 1,
+      amount: 0,
       suggestedParams,
     })
     const txn = await algokit.getTransactionWithSigner(payTxn, transactionSignerAccount())

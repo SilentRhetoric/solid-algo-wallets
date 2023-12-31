@@ -74,6 +74,7 @@ function UseNetwork() {
     return new Algodv2(token, server, port)
   })
 
+  // TODO: Need to utilize URLs for Allo on other networks when available
   function getAddrUrl(addr: string): string {
     const config = networkConfigs[activeNetwork()]
     const url = config.blockExplorer
@@ -84,7 +85,7 @@ function UseNetwork() {
         return `${url}/setnetwork?name=${activeNetwork().toLowerCase()}&redirect=explorer/account/${addr}`
       }
     } else {
-      return `${url}/address/${addr}`
+      return `${url}/account/${addr}` // Allo uses account instead of AE-style "address"
     }
   }
   function getAsaUrl(index: number): string {
