@@ -64,7 +64,7 @@ function UseNetwork() {
 
   const networkNames = Object.keys(networkConfigs) as NetworkName[]
 
-  const [activeNetwork, setActiveNetwork] = createSignal<NetworkName>('TestNet')
+  const [activeNetwork, setActiveNetwork] = createSignal<NetworkName>('MainNet')
 
   const algodClient = createMemo(() => {
     const config = networkConfigs[activeNetwork()]
