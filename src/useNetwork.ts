@@ -93,9 +93,9 @@ function UseNetwork() {
     const url = config.blockExplorer
     if (url === 'https://app.dappflow.org') {
       if (activeNetwork() === 'LocalNet') {
-        return `${url}/setnetwork?name=sandbox&redirect=explorer/transaction/${index}`
+        return `${url}/setnetwork?name=sandbox&redirect=explorer/asset/${index}`
       } else {
-        return `${url}/setnetwork?name=${activeNetwork().toLowerCase()}&redirect=explorer/transaction/${index}`
+        return `${url}/setnetwork?name=${activeNetwork().toLowerCase()}&redirect=explorer/asset/${index}`
       }
     } else {
       return `${url}/asset/${index}`
@@ -112,6 +112,19 @@ function UseNetwork() {
       }
     } else {
       return `${url}/tx/${txId}`
+    }
+  }
+  function getAppUrl(appId: number): string {
+    const config = networkConfigs[activeNetwork()]
+    const url = config.blockExplorer
+    if (url === 'https://app.dappflow.org') {
+      if (activeNetwork() === 'LocalNet') {
+        return `${url}/setnetwork?name=sandbox&redirect=explorer/application/${appId}`
+      } else {
+        return `${url}/setnetwork?name=${activeNetwork().toLowerCase()}&redirect=explorer/application/${appId}`
+      }
+    } else {
+      return `${url}/application/${appId}`
     }
   }
 
@@ -149,6 +162,7 @@ function UseNetwork() {
     activeNetwork,
     setActiveNetwork,
     getAddrUrl,
+    getAppUrl,
     getAsaUrl,
     getTxUrl,
     getAccountInfo,
