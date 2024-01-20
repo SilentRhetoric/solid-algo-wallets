@@ -4,7 +4,6 @@ import githubLogo from './assets/github-mark.svg'
 import { TransactionSignerAccount } from '@algorandfoundation/algokit-utils/types/account'
 import * as algokit from '@algorandfoundation/algokit-utils'
 import { AtomicTransactionComposer, makePaymentTxnWithSuggestedParamsFromObject } from 'algosdk'
-// Changed the exports to PascalCase to address Vite dev HMR issue
 import { UseSolidAlgoWallets, UseNetwork, NetworkName } from '../../src/index'
 
 export function ellipseString(string = '', width = 4): string {
@@ -55,96 +54,6 @@ const App: Component = () => {
 
   return (
     <div class="flex flex-col items-center justify-center p-4 text-center">
-      {/* <button
-        class="btn btn-accent m-1 w-60"
-        onClick={() => connect()}
-      >
-        MetaMask Connect
-      </button>
-      <button
-        class="btn btn-accent m-1 w-60"
-        onClick={() => displayBalance()}
-      >
-        MetaMask Display Balance
-      </button>
-      <button
-        class="btn btn-accent m-1 w-60"
-        onClick={() => getBalance()}
-      >
-        MetaMask Get Balance
-      </button>
-      <button
-        class="btn btn-accent m-1 w-60"
-        onClick={() => getAddress()}
-      >
-        MetaMask Get Address
-      </button>
-      <button
-        class="btn btn-accent m-1 w-60"
-        onClick={() => transfer()}
-      >
-        MetaMask Transfer
-      </button>
-      <button
-        class="btn btn-accent m-1 w-60"
-        onClick={() => displayMnemonic()}
-      >
-        MetaMask Display Mnemonic
-      </button>
-      <button
-        class="btn btn-accent m-1 w-60"
-        onClick={() => getTransactions()}
-      >
-        MetaMask Get Transactions
-      </button>
-      <button
-        class="btn btn-accent m-1 w-60"
-        onClick={() => getAssets()}
-      >
-        MetaMask Get Assets
-      </button>
-      <button
-        class="btn btn-accent m-1 w-60"
-        onClick={() => getAccounts()}
-      >
-        MetaMask Get Accounts
-      </button>
-      <button
-        class="btn btn-accent m-1 w-60"
-        onClick={() => getCurrentAccount()}
-      >
-        MetaMask Get Current Account
-      </button>
-      <button
-        class="btn btn-accent m-1 w-60"
-        onClick={() => setCurrentAccount()}
-      >
-        MetaMask Set Current Account
-      </button>
-      <button
-        class="btn btn-accent m-1 w-60"
-        onClick={() => assetOptIn()}
-      >
-        MetaMask Opt In
-      </button>
-      <button
-        class="btn btn-accent m-1 w-60"
-        onClick={() => assetOptOut()}
-      >
-        MetaMask Opt Out
-      </button>
-      <button
-        class="btn btn-accent m-1 w-60"
-        onClick={() => transferAsset()}
-      >
-        MetaMask Transfer Asset
-      </button>
-      <button
-        class="btn btn-accent m-1 w-60"
-        onClick={() => signTxns()}
-      >
-        MetaMask Sign Txn
-      </button> */}
       <img
         src={solidLogo}
         class="logo"

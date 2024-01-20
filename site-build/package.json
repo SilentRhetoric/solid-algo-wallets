@@ -11,21 +11,21 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^20.6.2",
-    "autoprefixer": "^10.4.16",
-    "daisyui": "^3.7.7",
-    "postcss": "^8.4.30",
-    "prettier": "3.0.3",
-    "prettier-plugin-tailwindcss": "^0.5.4",
-    "tailwindcss": "^3.3.3",
-    "typescript": "^5.2.2",
-    "vite": "^4.4.9",
-    "vite-plugin-solid": "^2.7.0"
+    "@types/node": "^20.11.5",
+    "autoprefixer": "^10.4.17",
+    "daisyui": "^4.6.0",
+    "postcss": "^8.4.33",
+    "prettier": "3.2.4",
+    "prettier-plugin-tailwindcss": "^0.5.11",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.3.3",
+    "vite": "^4.5.2",
+    "vite-plugin-solid": "^2.8.2"
   },
   "dependencies": {
-    "@algorandfoundation/algokit-utils": "^5.0.1",
+    "@algorandfoundation/algokit-utils": "^5.2.0",
     "algosdk": "2.7.0",
     "solid-algo-wallets": "workspace:*",
-    "solid-js": "^1.7.12"
+    "solid-js": "^1.8.11"
   }
 }
