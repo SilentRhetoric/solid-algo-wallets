@@ -82,7 +82,7 @@ function UseNetwork() {
       if (activeNetwork() === 'LocalNet') {
         return `${url}/setnetwork?name=sandbox&redirect=explorer/account/${addr}`
       } else {
-        return `${url}/setnetwork?name=${activeNetwork().toLowerCase()}&redirect=explorer/account/${addr}`
+        return `${url}/setnetwork?name=algonode_${activeNetwork().toLowerCase()}&redirect=explorer/account/${addr}`
       }
     } else {
       return `${url}/account/${addr}` // Allo uses account instead of AE-style "address"
@@ -95,7 +95,7 @@ function UseNetwork() {
       if (activeNetwork() === 'LocalNet') {
         return `${url}/setnetwork?name=sandbox&redirect=explorer/asset/${index}`
       } else {
-        return `${url}/setnetwork?name=${activeNetwork().toLowerCase()}&redirect=explorer/asset/${index}`
+        return `${url}/setnetwork?name=algonode_${activeNetwork().toLowerCase()}&redirect=explorer/asset/${index}`
       }
     } else {
       return `${url}/asset/${index}`
@@ -108,7 +108,7 @@ function UseNetwork() {
       if (activeNetwork() === 'LocalNet') {
         return `${url}/setnetwork?name=sandbox&redirect=explorer/transaction/${txId}`
       } else {
-        return `${url}/setnetwork?name=${activeNetwork().toLowerCase()}&redirect=explorer/transaction/${txId}`
+        return `${url}/setnetwork?name=algonode_${activeNetwork().toLowerCase()}&redirect=explorer/transaction/${txId}`
       }
     } else {
       return `${url}/tx/${txId}`
@@ -121,7 +121,7 @@ function UseNetwork() {
       if (activeNetwork() === 'LocalNet') {
         return `${url}/setnetwork?name=sandbox&redirect=explorer/application/${appId}`
       } else {
-        return `${url}/setnetwork?name=${activeNetwork().toLowerCase()}&redirect=explorer/application/${appId}`
+        return `${url}/setnetwork?name=algonode_${activeNetwork().toLowerCase()}&redirect=explorer/application/${appId}`
       }
     } else {
       return `${url}/application/${appId}`
