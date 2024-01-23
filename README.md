@@ -23,7 +23,17 @@ pnpm add solid-algo-wallets
 ### Use it
 
 ```js
-import solid-algo-wallets from 'solid-algo-wallets'
+import { UseSolidAlgoWallets } from 'solid-algo-wallets'
+```
+
+### Global This
+
+In order to use the library in the browser with Buffer, the following must be added to index.html (or at the Javascript entrypoint of your project):
+
+```html
+<script>
+  global = globalThis
+</script>
 ```
 
 ## Overview
