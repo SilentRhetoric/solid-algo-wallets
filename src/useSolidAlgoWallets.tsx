@@ -1,7 +1,7 @@
 import { makePersisted } from '@solid-primitives/storage'
 import { WalletAccount, WalletInterface } from './types'
 import { createRoot, createSignal } from 'solid-js'
-import UseMyAlgo from './wallets/myalgo'
+// import UseMyAlgo from './wallets/myalgo'
 import UseExodus from './wallets/exodus'
 import UseLedger from './wallets/ledger'
 import UsePera from './wallets/pera'
@@ -31,7 +31,7 @@ function UseSolidAlgoWallets() {
     UsePera,
     UseLedger,
     UseExodus,
-    UseMyAlgo,
+    // UseMyAlgo,
     UseWalletConnect,
     // useWalletConnectOld,
     // useDaffi,
